@@ -1,0 +1,74 @@
+# Project Status Review - Comprehensive project analysis
+name: project-status-review
+description: Analyze project status, track progress, and generate recommendations
+created: 2025-10-12T15:00:00Z
+version: 1.0
+
+steps:
+  - id: analyze-codebase
+    description: Analyze current codebase structure and implementation status
+    suggested_agent: project-orchestrator
+    estimated_tokens: 35000
+    estimated_time_minutes: 28
+    inputs: []
+    outputs:
+      - codebase_analysis
+      - implementation_status
+      - progress_metrics
+
+  - id: review-git-history
+    description: Review git history and commit patterns
+    suggested_agent: git-genius
+    estimated_tokens: 16000
+    estimated_time_minutes: 12
+    depends_on:
+      - analyze-codebase
+    inputs:
+      - codebase_analysis
+    outputs:
+      - git_analysis
+      - commit_patterns
+
+  - id: assess-coverage
+    description: Analyze test coverage and quality metrics
+    suggested_agent: coverage-analyzer
+    estimated_tokens: 12000
+    estimated_time_minutes: 10
+    depends_on:
+      - analyze-codebase
+    inputs:
+      - implementation_status
+    outputs:
+      - coverage_metrics
+      - quality_report
+
+  - id: generate-status-report
+    description: Generate comprehensive project status report
+    suggested_agent: docs-generator
+    estimated_tokens: 14000
+    estimated_time_minutes: 11
+    depends_on:
+      - analyze-codebase
+      - review-git-history
+      - assess-coverage
+    inputs:
+      - codebase_analysis
+      - git_analysis
+      - coverage_metrics
+    outputs:
+      - status_report
+      - recommendations
+
+metadata:
+  total_steps: 4
+  total_estimated_tokens: 77000
+  total_estimated_time_minutes: 61
+  tags:
+    - project-management
+    - analysis
+    - reporting
+  author: system
+
+execution:
+  strategy: sequential
+  optimization: quality

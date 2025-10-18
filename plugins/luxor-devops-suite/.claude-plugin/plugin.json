@@ -1,0 +1,100 @@
+{
+  "id": "luxor-devops-suite",
+  "name": "LUXOR DevOps Suite",
+  "version": "1.0.0",
+  "description": "Complete DevOps and infrastructure skills covering Docker, Kubernetes, AWS, Terraform, CI/CD, monitoring, microservices, and API gateways",
+  "author": "LUXOR <manu@luxor.dev>",
+  "license": "MIT",
+  "homepage": "https://github.com/luxor/luxor-devops-suite",
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/luxor/luxor-devops-suite.git"
+  },
+  "keywords": [
+    "docker",
+    "kubernetes",
+    "aws",
+    "terraform",
+    "devops",
+    "cicd"
+  ],
+  "contents": {
+    "skills": [
+      {
+        "name": "docker-compose-orchestration",
+        "path": "skills/docker-compose-orchestration",
+        "description": "Docker Compose Orchestration"
+      },
+      {
+        "name": "kubernetes-orchestration",
+        "path": "skills/kubernetes-orchestration",
+        "description": "Kubernetes Orchestration"
+      },
+      {
+        "name": "aws-cloud-architecture",
+        "path": "skills/aws-cloud-architecture",
+        "description": "Aws Cloud Architecture"
+      },
+      {
+        "name": "aws-cloud-services",
+        "path": "skills/aws-cloud-services",
+        "description": "Aws Cloud Services"
+      },
+      {
+        "name": "terraform-infrastructure",
+        "path": "skills/terraform-infrastructure",
+        "description": "Terraform Infrastructure"
+      },
+      {
+        "name": "terraform-infrastructure-as-code",
+        "path": "skills/terraform-infrastructure-as-code",
+        "description": "Terraform Infrastructure As Code"
+      },
+      {
+        "name": "ci-cd-pipeline-patterns",
+        "path": "skills/ci-cd-pipeline-patterns",
+        "description": "Ci Cd Pipeline Patterns"
+      },
+      {
+        "name": "observability-monitoring",
+        "path": "skills/observability-monitoring",
+        "description": "Observability Monitoring"
+      },
+      {
+        "name": "microservices-patterns",
+        "path": "skills/microservices-patterns",
+        "description": "Microservices Patterns"
+      },
+      {
+        "name": "enterprise-architecture-patterns",
+        "path": "skills/enterprise-architecture-patterns",
+        "description": "Enterprise Architecture Patterns"
+      },
+      {
+        "name": "api-gateway-patterns",
+        "path": "skills/api-gateway-patterns",
+        "description": "Api Gateway Patterns"
+      },
+      {
+        "name": "hasura-graphql-engine",
+        "path": "skills/hasura-graphql-engine",
+        "description": "Hasura Graphql Engine"
+      }
+    ],
+    "commands": [],
+    "agents": [],
+    "workflows": []
+  },
+  "dependencies": {
+    "claudeCode": ">=2.0.0"
+  },
+  "installation": {
+    "postInstall": "echo '\u2705 LUXOR DevOps Suite installed! 12 skills ready. Restart Claude Code.'"
+  },
+  "statistics": {
+    "totalSkills": 12,
+    "totalCommands": 0,
+    "totalAgents": 0,
+    "totalWorkflows": 0
+  }
+}

@@ -1,0 +1,49 @@
+{
+  "id": "luxor-ai-integration",
+  "name": "LUXOR AI Integration",
+  "version": "1.0.0",
+  "description": "AI and LLM integration skills covering LangChain orchestration and Claude SDK integration patterns",
+  "author": "LUXOR <manu@luxor.dev>",
+  "license": "MIT",
+  "homepage": "https://github.com/luxor/luxor-ai-integration",
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/luxor/luxor-ai-integration.git"
+  },
+  "keywords": [
+    "langchain",
+    "claude",
+    "ai",
+    "llm",
+    "anthropic"
+  ],
+  "contents": {
+    "skills": [
+      {
+        "name": "langchain-orchestration",
+        "path": "skills/langchain-orchestration",
+        "description": "Langchain Orchestration"
+      },
+      {
+        "name": "claude-sdk-integration-patterns",
+        "path": "skills/claude-sdk-integration-patterns",
+        "description": "Claude Sdk Integration Patterns"
+      }
+    ],
+    "commands": [],
+    "agents": [],
+    "workflows": []
+  },
+  "dependencies": {
+    "claudeCode": ">=2.0.0"
+  },
+  "installation": {
+    "postInstall": "echo '\u2705 LUXOR AI Integration installed! 2 skills ready. Restart Claude Code.'"
+  },
+  "statistics": {
+    "totalSkills": 2,
+    "totalCommands": 0,
+    "totalAgents": 0,
+    "totalWorkflows": 0
+  }
+}

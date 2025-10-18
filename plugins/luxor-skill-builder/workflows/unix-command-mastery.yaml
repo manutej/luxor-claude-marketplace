@@ -1,0 +1,72 @@
+# Unix Command Mastery - Research and document Unix commands
+name: unix-command-mastery
+description: Deep research on Unix commands with comprehensive documentation
+created: 2025-10-12T15:00:00Z
+version: 1.0
+
+steps:
+  - id: research-command
+    description: Research Unix command with /deep for authoritative sources
+    suggested_agent: unix-command-master
+    estimated_tokens: 18000
+    estimated_time_minutes: 14
+    inputs: []
+    outputs:
+      - command_research
+      - usage_patterns
+      - best_practices
+
+  - id: create-examples
+    description: Create practical shell script examples
+    suggested_agent: unix-bash-expert
+    estimated_tokens: 14000
+    estimated_time_minutes: 11
+    depends_on:
+      - research-command
+    inputs:
+      - command_research
+      - usage_patterns
+    outputs:
+      - script_examples
+      - practical_demos
+
+  - id: test-examples
+    description: Test shell script examples for correctness
+    suggested_agent: test-runner
+    estimated_tokens: 10000
+    estimated_time_minutes: 8
+    depends_on:
+      - create-examples
+    inputs:
+      - script_examples
+    outputs:
+      - test_results
+
+  - id: document-command
+    description: Generate comprehensive command documentation
+    suggested_agent: docs-generator
+    estimated_tokens: 12000
+    estimated_time_minutes: 9
+    depends_on:
+      - research-command
+      - create-examples
+    inputs:
+      - command_research
+      - script_examples
+      - best_practices
+    outputs:
+      - command_docs
+
+metadata:
+  total_steps: 4
+  total_estimated_tokens: 54000
+  total_estimated_time_minutes: 42
+  tags:
+    - unix
+    - bash
+    - documentation
+  author: system
+
+execution:
+  strategy: sequential
+  optimization: quality

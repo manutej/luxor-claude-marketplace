@@ -1,0 +1,71 @@
+# API Development - Complete REST API pipeline
+name: api-development
+description: End-to-end REST API development from design to deployment
+created: 2025-10-12T15:00:00Z
+version: 1.0
+
+steps:
+  - id: design-api
+    description: Design REST API with OpenAPI specification
+    suggested_agent: api-architect
+    estimated_tokens: 16000
+    estimated_time_minutes: 12
+    inputs: []
+    outputs:
+      - openapi_spec
+      - api_design_doc
+
+  - id: implement-endpoints
+    description: Implement API endpoints with proper error handling
+    suggested_agent: code-craftsman
+    estimated_tokens: 18000
+    estimated_time_minutes: 14
+    depends_on:
+      - design-api
+    inputs:
+      - openapi_spec
+    outputs:
+      - source_code
+      - implementation_files
+
+  - id: create-tests
+    description: Create comprehensive test suite with unit and integration tests
+    suggested_agent: test-engineer
+    estimated_tokens: 14000
+    estimated_time_minutes: 11
+    depends_on:
+      - implement-endpoints
+    inputs:
+      - source_code
+      - openapi_spec
+    outputs:
+      - test_files
+      - coverage_report
+
+  - id: generate-docs
+    description: Generate API documentation and usage examples
+    suggested_agent: docs-generator
+    estimated_tokens: 12000
+    estimated_time_minutes: 9
+    depends_on:
+      - design-api
+      - implement-endpoints
+    inputs:
+      - openapi_spec
+      - source_code
+    outputs:
+      - api_documentation
+
+metadata:
+  total_steps: 4
+  total_estimated_tokens: 60000
+  total_estimated_time_minutes: 46
+  tags:
+    - api
+    - backend
+    - development
+  author: system
+
+execution:
+  strategy: sequential
+  optimization: balanced

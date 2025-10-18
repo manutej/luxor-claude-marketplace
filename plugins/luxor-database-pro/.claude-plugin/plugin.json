@@ -1,0 +1,84 @@
+{
+  "id": "luxor-database-pro",
+  "name": "LUXOR Database Pro",
+  "version": "1.0.0",
+  "description": "Professional database engineering skills covering PostgreSQL, SQLAlchemy, Alembic, pandas, Redis, vector databases, and database patterns",
+  "author": "LUXOR <manu@luxor.dev>",
+  "license": "MIT",
+  "homepage": "https://github.com/luxor/luxor-database-pro",
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/luxor/luxor-database-pro.git"
+  },
+  "keywords": [
+    "postgresql",
+    "sqlalchemy",
+    "database",
+    "sql",
+    "redis"
+  ],
+  "contents": {
+    "skills": [
+      {
+        "name": "postgresql",
+        "path": "skills/postgresql",
+        "description": "Postgresql"
+      },
+      {
+        "name": "postgresql-database-engineering",
+        "path": "skills/postgresql-database-engineering",
+        "description": "Postgresql Database Engineering"
+      },
+      {
+        "name": "psycopg",
+        "path": "skills/psycopg",
+        "description": "Psycopg"
+      },
+      {
+        "name": "sqlalchemy",
+        "path": "skills/sqlalchemy",
+        "description": "Sqlalchemy"
+      },
+      {
+        "name": "alembic",
+        "path": "skills/alembic",
+        "description": "Alembic"
+      },
+      {
+        "name": "pandas",
+        "path": "skills/pandas",
+        "description": "Pandas"
+      },
+      {
+        "name": "redis-state-management",
+        "path": "skills/redis-state-management",
+        "description": "Redis State Management"
+      },
+      {
+        "name": "vector-database-management",
+        "path": "skills/vector-database-management",
+        "description": "Vector Database Management"
+      },
+      {
+        "name": "database-management-patterns",
+        "path": "skills/database-management-patterns",
+        "description": "Database Management Patterns"
+      }
+    ],
+    "commands": [],
+    "agents": [],
+    "workflows": []
+  },
+  "dependencies": {
+    "claudeCode": ">=2.0.0"
+  },
+  "installation": {
+    "postInstall": "echo '\u2705 LUXOR Database Pro installed! 9 skills ready. Restart Claude Code.'"
+  },
+  "statistics": {
+    "totalSkills": 9,
+    "totalCommands": 0,
+    "totalAgents": 0,
+    "totalWorkflows": 0
+  }
+}

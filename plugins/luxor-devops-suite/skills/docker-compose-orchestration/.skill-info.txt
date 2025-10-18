@@ -1,0 +1,61 @@
+Docker Compose Orchestration Skill
+===================================
+
+Created: October 17, 2025
+Version: 1.0.0
+Category: DevOps, Container Orchestration, Application Deployment
+
+File Summary:
+-------------
+SKILL.md    - 47KB, 2,173 lines - Comprehensive skill documentation
+README.md   - 13KB,   711 lines - Overview and quick reference
+EXAMPLES.md - 31KB, 1,295 lines - Production-ready examples
+
+Total: 91KB of comprehensive Docker Compose documentation
+
+Content Highlights:
+------------------
+- 15+ complete Docker Compose examples
+- Service definitions and patterns
+- Multi-container application architectures
+- Networking strategies (bridge, custom, overlay)
+- Volume management (named, bind mounts, tmpfs)
+- Health check implementations
+- Development vs Production configurations
+- Database replication examples
+- Microservices patterns
+- Monitoring and logging stacks
+- CI/CD integration examples
+- Security best practices
+
+Key Topics Covered:
+------------------
+✓ Full-stack web applications (MERN, LAMP, Django, Next.js)
+✓ Database services (PostgreSQL, MySQL, MongoDB)
+✓ Caching (Redis clusters)
+✓ Message queues (RabbitMQ, Kafka)
+✓ Monitoring (Prometheus, Grafana, ELK Stack)
+✓ CI/CD tools (GitLab, Jenkins)
+✓ Development environments
+✓ Production deployment strategies
+✓ Service orchestration patterns
+✓ Network isolation and security
+✓ Data persistence and backups
+✓ Scaling and high availability
+
+Research Sources:
+----------------
+- Docker Compose official documentation (Context7: /docker/compose)
+- Docker Awesome Compose examples (Context7: /docker/awesome-compose)
+- Docker documentation (Context7: /docker/docs)
+- Linear Dev Accelerator skill template reference
+
+Usage:
+------
+This skill enables comprehensive Docker Compose orchestration for:
+- Building multi-container applications
+- Setting up development environments
+- Deploying production services
+- Managing microservices architectures
+- Implementing monitoring and logging
+- Automating CI/CD workflows

@@ -1,0 +1,109 @@
+Psycopg Skill Package - Customer Support Tech Enablement
+========================================================
+
+Package Location: ~/Library/Application Support/Claude/skills/psycopg/
+
+Files Created:
+--------------
+1. SKILL.md (43 KB / 42.9 KB)
+   - Complete psycopg skill definition with YAML frontmatter
+   - Comprehensive coverage of psycopg3 features
+   - Customer support use cases and best practices
+   - Installation, configuration, and setup guides
+   - Connection management and pooling strategies
+   - Async operations and concurrent queries
+   - Transaction management and isolation levels
+   - Bulk operations (COPY, executemany)
+   - JSON/JSONB data handling
+   - Performance optimization techniques
+   - Error handling patterns
+   - Integration guides (FastAPI, SQLAlchemy)
+   - Migration guide from psycopg2 to psycopg3
+   - Best practices and common pitfalls
+
+2. README.md (20 KB / 19.6 KB)
+   - Overview of psycopg in customer support context
+   - Installation and setup instructions
+   - Quick start guide with basic examples
+   - Detailed psycopg2 vs psycopg3 comparison
+   - Key features and benefits for support teams
+   - Performance characteristics and benchmarks
+   - Comprehensive troubleshooting guide
+   - Security best practices
+   - Configuration examples
+   - Architecture overview
+   - Common use cases for customer support
+
+3. EXAMPLES.md (118 KB / 118.0 KB)
+   - 18 comprehensive, runnable examples
+   - Each example includes use case, complete code, and documentation
+   - Examples cover:
+     1. Basic connection and query execution
+     2. Connection pooling setup
+     3. Async queries with asyncio
+     4. Parameterized queries for security
+     5. Batch inserts for data migration
+     6. COPY operations for bulk export
+     7. Transaction handling with context managers
+     8. Cursor iteration for large result sets
+     9. JSON/JSONB data handling
+     10. Binary data and attachments
+     11. Connection retry logic
+     12. Error handling patterns
+     13. Performance monitoring
+     14. Integration with FastAPI
+     15. Testing with pytest and fixtures
+     16. Concurrent async operations
+     17. Server-side cursors
+     18. COPY FROM for bulk import
+
+Success Criteria Met:
+---------------------
+✓ SKILL.md: 42.9 KB (exceeds 20 KB requirement)
+✓ README.md: 19.6 KB (exceeds 10 KB requirement)
+✓ EXAMPLES.md: 118.0 KB (exceeds 15 KB requirement)
+✓ 18 practical examples (exceeds 15+ requirement)
+✓ Valid YAML frontmatter in SKILL.md
+✓ Customer support context integrated throughout
+✓ Production-ready code examples
+✓ Clear, actionable instructions
+✓ All examples are runnable and documented
+
+Key Features:
+-------------
+- Complete psycopg3 coverage with latest features
+- Context7 documentation integrated
+- Real-world customer support use cases
+- Performance optimization techniques
+- Security best practices (SQL injection prevention)
+- Async/await support for modern Python
+- Connection pooling for high-performance apps
+- Comprehensive error handling patterns
+- FastAPI integration example
+- Testing patterns with pytest
+- Migration guide from psycopg2
+- Troubleshooting guide with solutions
+
+Technologies Covered:
+--------------------
+- psycopg3 (latest version)
+- psycopg_pool (connection pooling)
+- asyncio (async database operations)
+- FastAPI (web framework integration)
+- pytest (testing)
+- PostgreSQL (database server)
+- Pydantic (data validation)
+- JSON/JSONB (flexible data storage)
+
+Target Audience:
+---------------
+- Customer Support Engineers
+- Technical Support Teams
+- Backend Developers
+- QA Engineers
+- Data Migration Specialists
+- Support Tool Developers
+
+Last Updated: 2025-10-18
+Version: 1.0.0
+Maintained By: Customer Support Tech Enablement Team

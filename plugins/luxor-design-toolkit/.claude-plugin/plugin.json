@@ -1,0 +1,59 @@
+{
+  "id": "luxor-design-toolkit",
+  "name": "LUXOR Design Toolkit",
+  "version": "1.0.0",
+  "description": "Design and UX skills covering Figma, wireframing, UX principles, and performance benchmarking",
+  "author": "LUXOR <manu@luxor.dev>",
+  "license": "MIT",
+  "homepage": "https://github.com/luxor/luxor-design-toolkit",
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/luxor/luxor-design-toolkit.git"
+  },
+  "keywords": [
+    "figma",
+    "design",
+    "ux",
+    "wireframing",
+    "performance"
+  ],
+  "contents": {
+    "skills": [
+      {
+        "name": "figma-design",
+        "path": "skills/figma-design",
+        "description": "Figma Design"
+      },
+      {
+        "name": "wireframing",
+        "path": "skills/wireframing",
+        "description": "Wireframing"
+      },
+      {
+        "name": "ux-principles",
+        "path": "skills/ux-principles",
+        "description": "Ux Principles"
+      },
+      {
+        "name": "performance-benchmark-specialist",
+        "path": "skills/performance-benchmark-specialist",
+        "description": "Performance Benchmark Specialist"
+      }
+    ],
+    "commands": [],
+    "agents": [],
+    "workflows": []
+  },
+  "dependencies": {
+    "claudeCode": ">=2.0.0"
+  },
+  "installation": {
+    "postInstall": "echo '\u2705 LUXOR Design Toolkit installed! 4 skills ready. Restart Claude Code.'"
+  },
+  "statistics": {
+    "totalSkills": 4,
+    "totalCommands": 0,
+    "totalAgents": 0,
+    "totalWorkflows": 0
+  }
+}

@@ -1,0 +1,110 @@
+{
+  "id": "luxor-backend-toolkit",
+  "name": "LUXOR Backend Toolkit",
+  "version": "1.0.0",
+  "description": "Comprehensive backend development skills covering FastAPI, Express.js, Node.js, Go, Spring Boot, Rust, GraphQL, REST APIs, gRPC, and OAuth2 authentication",
+  "author": "LUXOR <manu@luxor.dev>",
+  "license": "MIT",
+  "homepage": "https://github.com/luxor/luxor-backend-toolkit",
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/luxor/luxor-backend-toolkit.git"
+  },
+  "keywords": [
+    "fastapi",
+    "express",
+    "nodejs",
+    "golang",
+    "backend",
+    "api"
+  ],
+  "contents": {
+    "skills": [
+      {
+        "name": "fastapi",
+        "path": "skills/fastapi",
+        "description": "Fastapi"
+      },
+      {
+        "name": "fastapi-development",
+        "path": "skills/fastapi-development",
+        "description": "Fastapi Development"
+      },
+      {
+        "name": "fastapi-microservices-development",
+        "path": "skills/fastapi-microservices-development",
+        "description": "Fastapi Microservices Development"
+      },
+      {
+        "name": "expressjs-development",
+        "path": "skills/expressjs-development",
+        "description": "Expressjs Development"
+      },
+      {
+        "name": "express-microservices-architecture",
+        "path": "skills/express-microservices-architecture",
+        "description": "Express Microservices Architecture"
+      },
+      {
+        "name": "nodejs-development",
+        "path": "skills/nodejs-development",
+        "description": "Nodejs Development"
+      },
+      {
+        "name": "golang-backend-development",
+        "path": "skills/golang-backend-development",
+        "description": "Golang Backend Development"
+      },
+      {
+        "name": "spring-boot-development",
+        "path": "skills/spring-boot-development",
+        "description": "Spring Boot Development"
+      },
+      {
+        "name": "axum-web-framework",
+        "path": "skills/axum-web-framework",
+        "description": "Axum Web Framework"
+      },
+      {
+        "name": "rust-systems-programming",
+        "path": "skills/rust-systems-programming",
+        "description": "Rust Systems Programming"
+      },
+      {
+        "name": "graphql-api-development",
+        "path": "skills/graphql-api-development",
+        "description": "Graphql Api Development"
+      },
+      {
+        "name": "rest-api-design-patterns",
+        "path": "skills/rest-api-design-patterns",
+        "description": "Rest Api Design Patterns"
+      },
+      {
+        "name": "grpc-microservices",
+        "path": "skills/grpc-microservices",
+        "description": "Grpc Microservices"
+      },
+      {
+        "name": "oauth2-authentication",
+        "path": "skills/oauth2-authentication",
+        "description": "Oauth2 Authentication"
+      }
+    ],
+    "commands": [],
+    "agents": [],
+    "workflows": []
+  },
+  "dependencies": {
+    "claudeCode": ">=2.0.0"
+  },
+  "installation": {
+    "postInstall": "echo '\u2705 LUXOR Backend Toolkit installed! 14 skills ready. Restart Claude Code.'"
+  },
+  "statistics": {
+    "totalSkills": 14,
+    "totalCommands": 0,
+    "totalAgents": 0,
+    "totalWorkflows": 0
+  }
+}

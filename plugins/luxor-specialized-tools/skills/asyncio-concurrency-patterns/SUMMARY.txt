@@ -1,0 +1,185 @@
+========================================
+ASYNCIO CONCURRENCY PATTERNS SKILL
+Comprehensive Claude Code Skill
+========================================
+
+SKILL OVERVIEW
+--------------
+A complete guide for Python's asyncio library covering concurrency patterns, 
+event loops, coroutines, tasks, futures, async context managers, and 
+performance optimization for building high-performance asynchronous applications.
+
+FILE SUMMARY
+------------
+1. SKILL.md (42,237 bytes / 41 KB)
+   - Valid YAML frontmatter
+   - 20+ comprehensive sections
+   - Covers all core asyncio concepts
+   - 5 complete examples with full code
+   - Production-ready patterns
+   - Best practices and pitfalls
+   - Performance optimization techniques
+
+2. README.md (14,328 bytes / 14 KB)
+   - Quick start guide
+   - Core concepts overview
+   - Common patterns reference
+   - When to use asyncio
+   - Performance tips
+   - Testing guidance
+   - Real-world example
+
+3. EXAMPLES.md (55,379 bytes / 54 KB)
+   - 15 comprehensive examples
+   - Full production-ready code
+   - Real-world patterns
+   - Error handling examples
+   - Performance benchmarks
+   - Testing examples
+
+TOTAL EXAMPLES: 20+
+-------------------
+From EXAMPLES.md (15):
+1. Basic Concurrent HTTP Requests
+2. Rate-Limited API Client
+3. Streaming Large Downloads
+4. WebSocket Client with Reconnection
+5. WebSocket Server with Multiple Event Sources
+6. Connection Pool Management
+7. Advanced Producer-Consumer Pattern
+8. Semaphore for Resource Limiting
+9. Lock for Shared State
+10. Exponential Backoff Retry
+11. Application with Background Tasks
+12. Testing Async Code with pytest-asyncio
+13. Performance Comparison - Sequential vs Concurrent
+14. Circuit Breaker Pattern
+15. Graceful Shutdown
+
+From SKILL.md (5):
+1. Parallel HTTP Requests
+2. Rate-Limited API Client
+3. Database Connection Pool
+4. Real-Time Data Processor
+5. Async File I/O with aiofiles
+
+CONTEXT7 INTEGRATION
+--------------------
+Library: /aio-libs/aiohttp
+Topic: asyncio concurrency event loops coroutines tasks futures async patterns
+Tokens: 8000
+
+Context7 snippets integrated:
+- WebSocket handling with parallel event sources
+- ClientSession lifecycle management
+- Event loop creation and management
+- Background task patterns
+- Graceful shutdown patterns
+- Async context managers
+- Rate limiting and concurrency control
+- Testing utilities and patterns
+
+KEY FEATURES COVERED
+--------------------
+Core Concepts:
+- Event loops and loop policies
+- Coroutines vs functions
+- Tasks and futures
+- Async context managers
+- Synchronization primitives
+
+Concurrency Patterns:
+- Gather (concurrent execution)
+- Wait (flexible waiting)
+- Semaphore (limit concurrency)
+- Lock (mutual exclusion)
+- Event (signaling)
+- Queue (producer/consumer)
+
+Task Management:
+- Creating and naming tasks
+- Task cancellation
+- Exception handling
+- Timeout handling
+
+Event Loop Management:
+- Loop policies
+- Running blocking code
+- Loop callbacks
+- Custom executors
+
+Performance Optimization:
+- Profiling async code
+- Optimizing concurrency
+- Avoiding common pitfalls
+- Resource management
+
+Common Pitfalls:
+- Creating ClientSession outside event loop
+- Session as class variable
+- Forgetting await
+- Blocking the event loop
+- Not handling cancellation
+- Deadlocks with locks
+
+Production Patterns:
+- Graceful shutdown
+- Background tasks with application lifecycle
+- Retry logic with exponential backoff
+- Circuit breaker
+- WebSocket with multiple event sources
+- Connection pooling
+- Rate limiting
+
+Best Practices:
+- Testing async code
+- Debugging techniques
+- Documentation standards
+- Error handling
+- Resource cleanup
+
+VALIDATION RESULTS
+------------------
+✓ Valid YAML frontmatter in SKILL.md
+✓ SKILL.md ≥ 20 KB (41 KB)
+✓ README.md ≥ 10 KB (14 KB)
+✓ EXAMPLES.md ≥ 15 KB (54 KB)
+✓ 18+ examples (20 total)
+✓ Context7 integration
+✓ Production-ready code
+✓ Comprehensive coverage
+
+USAGE SCENARIOS
+---------------
+- Building I/O-bound applications
+- Creating web servers and API clients
+- Implementing WebSocket applications
+- Managing concurrent database operations
+- Building real-time systems
+- Optimizing application performance
+- Creating background task processors
+- Implementing async microservices
+
+LIBRARIES COVERED
+-----------------
+- asyncio (core library)
+- aiohttp (HTTP client/server)
+- aiofiles (async file I/O)
+- pytest-asyncio (testing)
+- asyncpg (PostgreSQL)
+- motor (MongoDB)
+- uvloop (performance)
+
+SKILL METADATA
+--------------
+Name: asyncio-concurrency-patterns
+Tier: tier-1
+Tags: asyncio, concurrency, async, python, event-loop, coroutines, performance
+Version: 1.0.0
+Last Updated: October 2025
+Category: Concurrency, Performance, Async Programming
+Compatible With: Python 3.7+, aiohttp, asyncio, uvloop
+
+========================================
+END OF SUMMARY
+========================================

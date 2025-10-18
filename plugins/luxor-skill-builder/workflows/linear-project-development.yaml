@@ -1,0 +1,79 @@
+# Linear Project Development - Full project lifecycle with Linear integration
+name: linear-project-development
+description: Manage project with Linear MCP, implement features pragmatically, and create comprehensive tests
+created: 2025-10-17T00:00:00Z
+version: 1.0
+
+steps:
+  - id: setup-linear-project
+    description: Set up Linear project structure, create issues, and organize workflow
+    suggested_agent: linear-mcp-orchestrator
+    estimated_tokens: 18000
+    estimated_time_minutes: 14
+    inputs: []
+    outputs:
+      - project_structure
+      - issue_list
+      - workflow_organization
+      - linear_project_id
+
+  - id: implement-features
+    description: Implement features following pragmatic programmer principles with clean, maintainable code
+    suggested_agent: practical-programmer
+    estimated_tokens: 22000
+    estimated_time_minutes: 18
+    depends_on:
+      - setup-linear-project
+    inputs:
+      - issue_list
+      - project_structure
+    outputs:
+      - feature_implementation
+      - code_files
+      - implementation_notes
+
+  - id: create-test-suite
+    description: Create comprehensive test suite with unit tests, integration tests, and test documentation
+    suggested_agent: test-engineer
+    estimated_tokens: 16000
+    estimated_time_minutes: 13
+    depends_on:
+      - implement-features
+    inputs:
+      - feature_implementation
+      - code_files
+    outputs:
+      - test_suite
+      - test_coverage_report
+      - test_documentation
+
+  - id: update-linear-status
+    description: Update Linear issues with implementation status, test results, and close completed tasks
+    suggested_agent: linear-mcp-orchestrator
+    estimated_tokens: 12000
+    estimated_time_minutes: 10
+    depends_on:
+      - create-test-suite
+    inputs:
+      - linear_project_id
+      - implementation_notes
+      - test_coverage_report
+    outputs:
+      - updated_issues
+      - project_status_report
+
+metadata:
+  total_steps: 4
+  total_estimated_tokens: 68000
+  total_estimated_time_minutes: 55
+  tags:
+    - linear
+    - project-management
+    - development
+    - testing
+    - workflow
+  author: system
+
+execution:
+  strategy: sequential
+  optimization: balanced

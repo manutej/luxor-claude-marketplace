@@ -1,0 +1,82 @@
+# GitHub Workflow Setup - CI/CD pipeline creation
+name: github-workflow-setup
+description: Design and implement GitHub Actions CI/CD workflows
+created: 2025-10-12T15:00:00Z
+version: 1.0
+
+steps:
+  - id: analyze-requirements
+    description: Analyze project requirements for CI/CD pipeline
+    suggested_agent: devops-github-expert
+    estimated_tokens: 16000
+    estimated_time_minutes: 12
+    inputs: []
+    outputs:
+      - requirements_analysis
+      - workflow_recommendations
+
+  - id: design-workflow
+    description: Design GitHub Actions workflow with proper stages
+    suggested_agent: github-workflow-expert
+    estimated_tokens: 18000
+    estimated_time_minutes: 14
+    depends_on:
+      - analyze-requirements
+    inputs:
+      - requirements_analysis
+      - workflow_recommendations
+    outputs:
+      - workflow_design
+      - action_definitions
+
+  - id: implement-workflow
+    description: Implement GitHub Actions YAML workflows
+    suggested_agent: code-craftsman
+    estimated_tokens: 14000
+    estimated_time_minutes: 11
+    depends_on:
+      - design-workflow
+    inputs:
+      - workflow_design
+      - action_definitions
+    outputs:
+      - workflow_files
+
+  - id: create-deployment
+    description: Create deployment configuration for GitHub
+    suggested_agent: deployment-orchestrator
+    estimated_tokens: 16000
+    estimated_time_minutes: 12
+    depends_on:
+      - implement-workflow
+    inputs:
+      - workflow_files
+    outputs:
+      - deployment_config
+
+  - id: document-pipeline
+    description: Document CI/CD pipeline and deployment process
+    suggested_agent: docs-generator
+    estimated_tokens: 12000
+    estimated_time_minutes: 9
+    depends_on:
+      - create-deployment
+    inputs:
+      - workflow_files
+      - deployment_config
+    outputs:
+      - pipeline_docs
+
+metadata:
+  total_steps: 5
+  total_estimated_tokens: 76000
+  total_estimated_time_minutes: 58
+  tags:
+    - cicd
+    - github
+    - devops
+  author: system
+
+execution:
+  strategy: sequential
+  optimization: balanced

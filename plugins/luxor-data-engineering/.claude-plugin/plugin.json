@@ -1,0 +1,65 @@
+{
+  "id": "luxor-data-engineering",
+  "name": "LUXOR Data Engineering",
+  "version": "1.0.0",
+  "description": "Data engineering and ML skills covering Apache Airflow, Spark, Kafka, dbt, and MLOps workflows",
+  "author": "LUXOR <manu@luxor.dev>",
+  "license": "MIT",
+  "homepage": "https://github.com/luxor/luxor-data-engineering",
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/luxor/luxor-data-engineering.git"
+  },
+  "keywords": [
+    "airflow",
+    "spark",
+    "kafka",
+    "dbt",
+    "mlops",
+    "data-engineering"
+  ],
+  "contents": {
+    "skills": [
+      {
+        "name": "apache-airflow-orchestration",
+        "path": "skills/apache-airflow-orchestration",
+        "description": "Apache Airflow Orchestration"
+      },
+      {
+        "name": "apache-spark-data-processing",
+        "path": "skills/apache-spark-data-processing",
+        "description": "Apache Spark Data Processing"
+      },
+      {
+        "name": "kafka-stream-processing",
+        "path": "skills/kafka-stream-processing",
+        "description": "Kafka Stream Processing"
+      },
+      {
+        "name": "dbt-data-transformation",
+        "path": "skills/dbt-data-transformation",
+        "description": "Dbt Data Transformation"
+      },
+      {
+        "name": "mlops-workflows",
+        "path": "skills/mlops-workflows",
+        "description": "Mlops Workflows"
+      }
+    ],
+    "commands": [],
+    "agents": [],
+    "workflows": []
+  },
+  "dependencies": {
+    "claudeCode": ">=2.0.0"
+  },
+  "installation": {
+    "postInstall": "echo '\u2705 LUXOR Data Engineering installed! 5 skills ready. Restart Claude Code.'"
+  },
+  "statistics": {
+    "totalSkills": 5,
+    "totalCommands": 0,
+    "totalAgents": 0,
+    "totalWorkflows": 0
+  }
+}

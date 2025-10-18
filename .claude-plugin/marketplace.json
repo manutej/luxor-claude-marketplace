@@ -1,0 +1,300 @@
+{
+  "name": "LUXOR Claude Code Marketplace",
+  "description": "Professional Claude Code plugins covering frontend, backend, database, DevOps, data engineering, testing, AI, design, and specialized development tools. Built from 67+ production-grade skills.",
+  "version": "1.0.0",
+  "author": "LUXOR <manu@luxor.dev>",
+  "homepage": "https://github.com/luxor/luxor-claude-marketplace",
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/luxor/luxor-claude-marketplace.git"
+  },
+  "plugins": [
+    {
+      "id": "luxor-frontend-essentials",
+      "name": "LUXOR Frontend Essentials",
+      "description": "Comprehensive frontend development skills covering React, Next.js, Angular, Svelte, Vue, Tailwind CSS, and modern JavaScript patterns",
+      "version": "1.0.0",
+      "author": "LUXOR",
+      "repository": "https://github.com/luxor/luxor-frontend-essentials.git",
+      "category": "frontend",
+      "tags": ["react", "nextjs", "angular", "svelte", "vue", "tailwind", "frontend", "javascript"],
+      "featured": true,
+      "contents": {
+        "skills": 13,
+        "commands": 0,
+        "agents": 0,
+        "workflows": 0
+      },
+      "install": {
+        "type": "git",
+        "url": "https://github.com/luxor/luxor-frontend-essentials.git"
+      }
+    },
+    {
+      "id": "luxor-backend-toolkit",
+      "name": "LUXOR Backend Toolkit",
+      "description": "Comprehensive backend development skills covering FastAPI, Express.js, Node.js, Go, Spring Boot, Rust, GraphQL, REST APIs, gRPC, and OAuth2",
+      "version": "1.0.0",
+      "author": "LUXOR",
+      "repository": "https://github.com/luxor/luxor-backend-toolkit.git",
+      "category": "backend",
+      "tags": ["fastapi", "express", "nodejs", "golang", "backend", "api", "rust", "graphql"],
+      "featured": true,
+      "contents": {
+        "skills": 14,
+        "commands": 0,
+        "agents": 0,
+        "workflows": 0
+      },
+      "install": {
+        "type": "git",
+        "url": "https://github.com/luxor/luxor-backend-toolkit.git"
+      }
+    },
+    {
+      "id": "luxor-database-pro",
+      "name": "LUXOR Database Pro",
+      "description": "Professional database engineering skills covering PostgreSQL, SQLAlchemy, Alembic, pandas, Redis, and vector databases",
+      "version": "1.0.0",
+      "author": "LUXOR",
+      "repository": "https://github.com/luxor/luxor-database-pro.git",
+      "category": "database",
+      "tags": ["postgresql", "sqlalchemy", "database", "sql", "redis", "pandas"],
+      "featured": false,
+      "contents": {
+        "skills": 9,
+        "commands": 0,
+        "agents": 0,
+        "workflows": 0
+      },
+      "install": {
+        "type": "git",
+        "url": "https://github.com/luxor/luxor-database-pro.git"
+      }
+    },
+    {
+      "id": "luxor-devops-suite",
+      "name": "LUXOR DevOps Suite",
+      "description": "Complete DevOps and infrastructure skills covering Docker, Kubernetes, AWS, Terraform, CI/CD, monitoring, and microservices",
+      "version": "1.0.0",
+      "author": "LUXOR",
+      "repository": "https://github.com/luxor/luxor-devops-suite.git",
+      "category": "devops",
+      "tags": ["docker", "kubernetes", "aws", "terraform", "devops", "cicd", "monitoring"],
+      "featured": true,
+      "contents": {
+        "skills": 12,
+        "commands": 0,
+        "agents": 0,
+        "workflows": 0
+      },
+      "install": {
+        "type": "git",
+        "url": "https://github.com/luxor/luxor-devops-suite.git"
+      }
+    },
+    {
+      "id": "luxor-data-engineering",
+      "name": "LUXOR Data Engineering",
+      "description": "Data engineering and ML skills covering Apache Airflow, Spark, Kafka, dbt, and MLOps workflows",
+      "version": "1.0.0",
+      "author": "LUXOR",
+      "repository": "https://github.com/luxor/luxor-data-engineering.git",
+      "category": "data-engineering",
+      "tags": ["airflow", "spark", "kafka", "dbt", "mlops", "data-engineering"],
+      "featured": false,
+      "contents": {
+        "skills": 5,
+        "commands": 0,
+        "agents": 0,
+        "workflows": 0
+      },
+      "install": {
+        "type": "git",
+        "url": "https://github.com/luxor/luxor-data-engineering.git"
+      }
+    },
+    {
+      "id": "luxor-testing-essentials",
+      "name": "LUXOR Testing Essentials",
+      "description": "Comprehensive testing skills covering pytest, pytest patterns, and shell testing framework",
+      "version": "1.0.0",
+      "author": "LUXOR",
+      "repository": "https://github.com/luxor/luxor-testing-essentials.git",
+      "category": "testing",
+      "tags": ["pytest", "testing", "test-automation"],
+      "featured": false,
+      "contents": {
+        "skills": 3,
+        "commands": 0,
+        "agents": 0,
+        "workflows": 0
+      },
+      "install": {
+        "type": "git",
+        "url": "https://github.com/luxor/luxor-testing-essentials.git"
+      }
+    },
+    {
+      "id": "luxor-ai-integration",
+      "name": "LUXOR AI Integration",
+      "description": "AI and LLM integration skills covering LangChain orchestration and Claude SDK integration patterns",
+      "version": "1.0.0",
+      "author": "LUXOR",
+      "repository": "https://github.com/luxor/luxor-ai-integration.git",
+      "category": "ai",
+      "tags": ["langchain", "claude", "ai", "llm", "anthropic"],
+      "featured": false,
+      "contents": {
+        "skills": 2,
+        "commands": 0,
+        "agents": 0,
+        "workflows": 0
+      },
+      "install": {
+        "type": "git",
+        "url": "https://github.com/luxor/luxor-ai-integration.git"
+      }
+    },
+    {
+      "id": "luxor-design-toolkit",
+      "name": "LUXOR Design Toolkit",
+      "description": "Design and UX skills covering Figma, wireframing, UX principles, and performance benchmarking",
+      "version": "1.0.0",
+      "author": "LUXOR",
+      "repository": "https://github.com/luxor/luxor-design-toolkit.git",
+      "category": "design",
+      "tags": ["figma", "design", "ux", "wireframing", "performance"],
+      "featured": false,
+      "contents": {
+        "skills": 4,
+        "commands": 0,
+        "agents": 0,
+        "workflows": 0
+      },
+      "install": {
+        "type": "git",
+        "url": "https://github.com/luxor/luxor-design-toolkit.git"
+      }
+    },
+    {
+      "id": "luxor-specialized-tools",
+      "name": "LUXOR Specialized Tools",
+      "description": "Specialized developer tools including Playwright, Linear, asyncio patterns, unix-goto, and Pydantic",
+      "version": "1.0.0",
+      "author": "LUXOR",
+      "repository": "https://github.com/luxor/luxor-specialized-tools.git",
+      "category": "tools",
+      "tags": ["playwright", "linear", "asyncio", "pydantic", "tools"],
+      "featured": false,
+      "contents": {
+        "skills": 5,
+        "commands": 0,
+        "agents": 0,
+        "workflows": 0
+      },
+      "install": {
+        "type": "git",
+        "url": "https://github.com/luxor/luxor-specialized-tools.git"
+      }
+    },
+    {
+      "id": "luxor-skill-builder",
+      "name": "LUXOR Skill Builder",
+      "description": "Complete meta tools for creating and managing Claude Code skills, commands, agents, and workflows. Includes 30 specialized agents, 28 powerful commands, and 15 production workflows - essential for plugin creators",
+      "version": "1.0.0",
+      "author": "LUXOR",
+      "repository": "https://github.com/luxor/luxor-skill-builder.git",
+      "category": "meta",
+      "tags": ["skill-builder", "meta", "tools", "automation", "plugin-creation"],
+      "featured": true,
+      "contents": {
+        "skills": 0,
+        "commands": 28,
+        "agents": 30,
+        "workflows": 15
+      },
+      "install": {
+        "type": "git",
+        "url": "https://github.com/luxor/luxor-skill-builder.git"
+      }
+    }
+  ],
+  "categories": [
+    {
+      "id": "frontend",
+      "name": "Frontend Development",
+      "description": "React, Next.js, Angular, Vue, Svelte and modern frontend frameworks",
+      "count": 1
+    },
+    {
+      "id": "backend",
+      "name": "Backend Development",
+      "description": "FastAPI, Express, Node.js, Go, Rust and backend frameworks",
+      "count": 1
+    },
+    {
+      "id": "database",
+      "name": "Database & Data",
+      "description": "PostgreSQL, SQLAlchemy, Redis and data management",
+      "count": 1
+    },
+    {
+      "id": "devops",
+      "name": "DevOps & Infrastructure",
+      "description": "Docker, Kubernetes, AWS, Terraform and cloud infrastructure",
+      "count": 1
+    },
+    {
+      "id": "data-engineering",
+      "name": "Data Engineering & ML",
+      "description": "Airflow, Spark, Kafka, dbt and data pipelines",
+      "count": 1
+    },
+    {
+      "id": "testing",
+      "name": "Testing & QA",
+      "description": "pytest, testing frameworks and quality assurance",
+      "count": 1
+    },
+    {
+      "id": "ai",
+      "name": "AI & Integration",
+      "description": "LangChain, Claude SDK and AI/LLM integration",
+      "count": 1
+    },
+    {
+      "id": "design",
+      "name": "Design & UX",
+      "description": "Figma, wireframing and user experience design",
+      "count": 1
+    },
+    {
+      "id": "tools",
+      "name": "Specialized Tools",
+      "description": "Playwright, Linear, asyncio and developer utilities",
+      "count": 1
+    },
+    {
+      "id": "meta",
+      "name": "Meta & Builder Tools",
+      "description": "Skill building, plugin creation and development automation",
+      "count": 1
+    }
+  ],
+  "featured": [
+    "luxor-frontend-essentials",
+    "luxor-backend-toolkit",
+    "luxor-devops-suite",
+    "luxor-skill-builder"
+  ],
+  "updated": "2025-10-18T00:00:00Z",
+  "statistics": {
+    "total_plugins": 10,
+    "total_skills": 67,
+    "total_commands": 28,
+    "total_agents": 30,
+    "total_workflows": 15,
+    "last_updated": "2025-10-18"
+  }
+}

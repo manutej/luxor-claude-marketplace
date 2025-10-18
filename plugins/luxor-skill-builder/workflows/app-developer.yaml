@@ -1,0 +1,385 @@
+# app-developer.yaml
+# Complete application development workflow from conception to deployment
+name: app-developer
+description: End-to-end application development pipeline covering requirements, design, implementation, testing, and deployment
+created: 2025-10-14T00:00:00Z
+version: 1.0
+
+steps:
+  - id: requirements-analysis
+    description: Analyze requirements and create technical specification document
+    suggested_agent: practical-programmer
+    estimated_tokens: 15000
+    estimated_time_minutes: 12
+    inputs: []
+    outputs:
+      - requirements_doc
+      - technical_spec
+      - architecture_decisions
+    notes: |
+      Gather and document functional/non-functional requirements
+      Define success criteria and constraints
+      Create initial technical specification
+
+  - id: api-design
+    description: Design RESTful API architecture with OpenAPI specification
+    suggested_agent: api-architect
+    estimated_tokens: 18000
+    estimated_time_minutes: 15
+    depends_on:
+      - requirements-analysis
+    inputs:
+      - requirements_doc
+      - technical_spec
+    outputs:
+      - openapi_spec
+      - api_design_doc
+      - database_schema
+    notes: |
+      Design REST endpoints with proper HTTP methods
+      Create database schema with relationships
+      Define authentication/authorization strategy
+
+  - id: frontend-architecture
+    description: Design frontend component architecture and state management
+    suggested_agent: frontend-architect
+    estimated_tokens: 16000
+    estimated_time_minutes: 13
+    depends_on:
+      - requirements-analysis
+      - api-design
+    inputs:
+      - requirements_doc
+      - api_design_doc
+      - openapi_spec
+    outputs:
+      - component_architecture
+      - state_management_design
+      - routing_structure
+    can_parallelize: true
+    parallel_group: design
+    notes: |
+      Design React/Flutter component hierarchy
+      Plan state management (Redux, Provider, etc.)
+      Define routing and navigation structure
+
+  - id: implement-backend
+    description: Implement backend API endpoints and business logic
+    suggested_agent: code-craftsman
+    estimated_tokens: 25000
+    estimated_time_minutes: 22
+    depends_on:
+      - api-design
+    inputs:
+      - openapi_spec
+      - database_schema
+      - technical_spec
+    outputs:
+      - backend_source_code
+      - database_migrations
+      - api_implementation
+    notes: |
+      Implement Express.js/FastAPI/Django endpoints
+      Create database models and migrations
+      Implement authentication and middleware
+
+  - id: implement-frontend
+    description: Implement frontend UI components and user interface
+    suggested_agent: frontend-architect
+    estimated_tokens: 28000
+    estimated_time_minutes: 25
+    depends_on:
+      - frontend-architecture
+      - api-design
+    inputs:
+      - component_architecture
+      - state_management_design
+      - openapi_spec
+    outputs:
+      - frontend_source_code
+      - ui_components
+      - state_management_code
+    can_parallelize: true
+    parallel_group: implementation
+    notes: |
+      Build React/Flutter components
+      Implement state management
+      Create responsive UI with accessibility
+
+  - id: integration
+    description: Integrate frontend with backend API endpoints
+    suggested_agent: practical-programmer
+    estimated_tokens: 16000
+    estimated_time_minutes: 14
+    depends_on:
+      - implement-backend
+      - implement-frontend
+    inputs:
+      - backend_source_code
+      - frontend_source_code
+      - openapi_spec
+    outputs:
+      - integrated_application
+      - api_client_code
+      - integration_config
+    notes: |
+      Connect frontend to backend APIs
+      Handle authentication flow
+      Implement error handling and loading states
+
+  - id: backend-testing
+    description: Create comprehensive backend test suite with unit and integration tests
+    suggested_agent: test-engineer
+    estimated_tokens: 20000
+    estimated_time_minutes: 18
+    depends_on:
+      - implement-backend
+    inputs:
+      - backend_source_code
+      - openapi_spec
+      - database_schema
+    outputs:
+      - backend_test_suite
+      - integration_tests
+      - test_coverage_report
+    can_parallelize: true
+    parallel_group: testing
+    notes: |
+      Write unit tests for business logic
+      Create API integration tests
+      Test database operations and migrations
+
+  - id: frontend-testing
+    description: Create frontend test suite with component and E2E tests
+    suggested_agent: test-engineer
+    estimated_tokens: 22000
+    estimated_time_minutes: 19
+    depends_on:
+      - implement-frontend
+    inputs:
+      - frontend_source_code
+      - component_architecture
+      - ui_components
+    outputs:
+      - frontend_test_suite
+      - component_tests
+      - e2e_tests
+    can_parallelize: true
+    parallel_group: testing
+    notes: |
+      Write component unit tests (Jest/React Testing Library)
+      Create E2E tests (Cypress/Playwright)
+      Test user interactions and flows
+
+  - id: security-audit
+    description: Perform security audit and vulnerability assessment
+    suggested_agent: debug-detective
+    estimated_tokens: 18000
+    estimated_time_minutes: 16
+    depends_on:
+      - integration
+      - backend-testing
+      - frontend-testing
+    inputs:
+      - integrated_application
+      - backend_source_code
+      - frontend_source_code
+    outputs:
+      - security_audit_report
+      - vulnerability_fixes
+      - security_recommendations
+    notes: |
+      Scan for common vulnerabilities (XSS, CSRF, injection)
+      Review authentication and authorization
+      Check dependency vulnerabilities
+
+  - id: performance-optimization
+    description: Optimize application performance and bundle size
+    suggested_agent: frontend-architect
+    estimated_tokens: 17000
+    estimated_time_minutes: 15
+    depends_on:
+      - integration
+      - frontend-testing
+    inputs:
+      - integrated_application
+      - frontend_source_code
+      - backend_source_code
+    outputs:
+      - optimized_code
+      - performance_report
+      - optimization_recommendations
+    can_parallelize: true
+    parallel_group: optimization
+    notes: |
+      Optimize React rendering and memoization
+      Implement code splitting and lazy loading
+      Optimize database queries and API calls
+
+  - id: api-documentation
+    description: Generate comprehensive API documentation
+    suggested_agent: docs-generator
+    estimated_tokens: 14000
+    estimated_time_minutes: 12
+    depends_on:
+      - implement-backend
+      - backend-testing
+    inputs:
+      - openapi_spec
+      - backend_source_code
+      - api_implementation
+    outputs:
+      - api_documentation
+      - integration_guides
+      - code_examples
+    can_parallelize: true
+    parallel_group: documentation
+    notes: |
+      Generate API reference from OpenAPI spec
+      Create integration guides and examples
+      Document authentication flow
+
+  - id: user-documentation
+    description: Create user-facing documentation and guides
+    suggested_agent: docs-generator
+    estimated_tokens: 13000
+    estimated_time_minutes: 11
+    depends_on:
+      - integration
+    inputs:
+      - integrated_application
+      - requirements_doc
+      - ui_components
+    outputs:
+      - user_documentation
+      - tutorial_guides
+      - faq_document
+    can_parallelize: true
+    parallel_group: documentation
+    notes: |
+      Write user guides and tutorials
+      Create FAQ and troubleshooting docs
+      Document features and workflows
+
+  - id: deployment-setup
+    description: Configure deployment pipeline and infrastructure
+    suggested_agent: deployment-orchestrator
+    estimated_tokens: 20000
+    estimated_time_minutes: 18
+    depends_on:
+      - security-audit
+      - performance-optimization
+    inputs:
+      - integrated_application
+      - backend_source_code
+      - frontend_source_code
+      - database_schema
+    outputs:
+      - docker_configs
+      - kubernetes_manifests
+      - ci_cd_pipeline
+      - deployment_docs
+    notes: |
+      Create Dockerfiles for services
+      Generate Kubernetes manifests
+      Set up CI/CD with GitHub Actions
+      Configure environment variables
+
+  - id: final-validation
+    description: Run final validation and quality checks before deployment
+    suggested_agent: test-engineer
+    estimated_tokens: 15000
+    estimated_time_minutes: 13
+    depends_on:
+      - deployment-setup
+      - backend-testing
+      - frontend-testing
+      - api-documentation
+      - user-documentation
+    inputs:
+      - integrated_application
+      - backend_test_suite
+      - frontend_test_suite
+      - deployment_docs
+    outputs:
+      - validation_report
+      - deployment_checklist
+      - release_notes
+    notes: |
+      Run all test suites
+      Verify deployment configuration
+      Create deployment checklist and release notes
+
+metadata:
+  total_steps: 14
+  total_estimated_tokens: 257000
+  total_estimated_time_minutes: 223
+  total_estimated_hours: 3.7
+  tags:
+    - app-development
+    - full-stack
+    - deployment
+    - testing
+    - documentation
+  author: claude-code
+  complexity: high
+  target_use_cases:
+    - Web application development
+    - Mobile app development
+    - Full-stack projects
+    - MVP development
+    - Production-ready applications
+
+execution:
+  strategy: mixed  # Sequential with parallel opportunities
+  optimization: balanced  # Balance between speed, quality, and tokens
+
+  parallel_groups:
+    design:
+      - frontend-architecture
+    implementation:
+      - implement-frontend
+    testing:
+      - backend-testing
+      - frontend-testing
+    optimization:
+      - performance-optimization
+    documentation:
+      - api-documentation
+      - user-documentation
+
+  sequential_dependencies:
+    - requirements-analysis
+    - api-design
+    - [implement-backend, implement-frontend]  # Can run in parallel
+    - integration
+    - [backend-testing, frontend-testing]  # Can run in parallel
+    - security-audit
+    - [performance-optimization, api-documentation, user-documentation]  # Can run in parallel
+    - deployment-setup
+    - final-validation
+
+  checkpoints:
+    - after: requirements-analysis
+      validate: requirements_doc exists and is complete
+    - after: api-design
+      validate: openapi_spec is valid
+    - after: integration
+      validate: application runs without errors
+    - after: security-audit
+      validate: no critical vulnerabilities
+    - after: final-validation
+      validate: all tests pass
+
+recommendations:
+  - For faster execution, run parallel_groups concurrently where possible
+  - Checkpoint after each major phase to validate outputs
+  - Use /context-budget to monitor token usage throughout workflow
+  - Consider breaking into smaller workflows for very large applications
+  - Save agent outputs for handoff between steps
+
+estimated_costs:
+  tokens: 257000
+  time_sequential: 223 minutes (3.7 hours)
+  time_optimized: 145 minutes (2.4 hours) with parallelization
+  suggested_context_budget: 300000 tokens (includes overhead)

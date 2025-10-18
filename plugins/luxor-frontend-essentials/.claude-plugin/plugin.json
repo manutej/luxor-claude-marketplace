@@ -1,0 +1,107 @@
+{
+  "id": "luxor-frontend-essentials",
+  "name": "LUXOR Frontend Essentials",
+  "version": "1.0.0",
+  "description": "Comprehensive frontend development skills covering React, Next.js, Angular, Svelte, Vue, Tailwind CSS, and modern JavaScript patterns with testing and responsive design",
+  "author": "LUXOR <manu@luxor.dev>",
+  "license": "MIT",
+  "homepage": "https://github.com/luxor/luxor-frontend-essentials",
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/luxor/luxor-frontend-essentials.git"
+  },
+  "keywords": [
+    "react",
+    "nextjs",
+    "angular",
+    "svelte",
+    "vue",
+    "tailwind",
+    "frontend",
+    "javascript"
+  ],
+  "contents": {
+    "skills": [
+      {
+        "name": "react-development",
+        "path": "skills/react-development",
+        "description": "React Development"
+      },
+      {
+        "name": "react-patterns",
+        "path": "skills/react-patterns",
+        "description": "React Patterns"
+      },
+      {
+        "name": "nextjs-development",
+        "path": "skills/nextjs-development",
+        "description": "Nextjs Development"
+      },
+      {
+        "name": "angular-development",
+        "path": "skills/angular-development",
+        "description": "Angular Development"
+      },
+      {
+        "name": "svelte-development",
+        "path": "skills/svelte-development",
+        "description": "Svelte Development"
+      },
+      {
+        "name": "vuejs-development",
+        "path": "skills/vuejs-development",
+        "description": "Vuejs Development"
+      },
+      {
+        "name": "tailwind-css",
+        "path": "skills/tailwind-css",
+        "description": "Tailwind Css"
+      },
+      {
+        "name": "javascript-fundamentals",
+        "path": "skills/javascript-fundamentals",
+        "description": "Javascript Fundamentals"
+      },
+      {
+        "name": "frontend-architecture",
+        "path": "skills/frontend-architecture",
+        "description": "Frontend Architecture"
+      },
+      {
+        "name": "responsive-design",
+        "path": "skills/responsive-design",
+        "description": "Responsive Design"
+      },
+      {
+        "name": "ui-design-patterns",
+        "path": "skills/ui-design-patterns",
+        "description": "Ui Design Patterns"
+      },
+      {
+        "name": "mobile-design",
+        "path": "skills/mobile-design",
+        "description": "Mobile Design"
+      },
+      {
+        "name": "jest-react-testing",
+        "path": "skills/jest-react-testing",
+        "description": "Jest React Testing"
+      }
+    ],
+    "commands": [],
+    "agents": [],
+    "workflows": []
+  },
+  "dependencies": {
+    "claudeCode": ">=2.0.0"
+  },
+  "installation": {
+    "postInstall": "echo '\u2705 LUXOR Frontend Essentials installed! 13 skills ready. Restart Claude Code.'"
+  },
+  "statistics": {
+    "totalSkills": 13,
+    "totalCommands": 0,
+    "totalAgents": 0,
+    "totalWorkflows": 0
+  }
+}

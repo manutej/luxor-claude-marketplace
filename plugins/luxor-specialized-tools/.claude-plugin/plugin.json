@@ -1,0 +1,64 @@
+{
+  "id": "luxor-specialized-tools",
+  "name": "LUXOR Specialized Tools",
+  "version": "1.0.0",
+  "description": "Specialized developer tools including Playwright, Linear, asyncio patterns, unix-goto, and Pydantic",
+  "author": "LUXOR <manu@luxor.dev>",
+  "license": "MIT",
+  "homepage": "https://github.com/luxor/luxor-specialized-tools",
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/luxor/luxor-specialized-tools.git"
+  },
+  "keywords": [
+    "playwright",
+    "linear",
+    "asyncio",
+    "pydantic",
+    "tools"
+  ],
+  "contents": {
+    "skills": [
+      {
+        "name": "playwright-visual-testing",
+        "path": "skills/playwright-visual-testing",
+        "description": "Playwright Visual Testing"
+      },
+      {
+        "name": "linear-dev-accelerator",
+        "path": "skills/linear-dev-accelerator",
+        "description": "Linear Dev Accelerator"
+      },
+      {
+        "name": "asyncio-concurrency-patterns",
+        "path": "skills/asyncio-concurrency-patterns",
+        "description": "Asyncio Concurrency Patterns"
+      },
+      {
+        "name": "unix-goto-development",
+        "path": "skills/unix-goto-development",
+        "description": "Unix Goto Development"
+      },
+      {
+        "name": "pydantic",
+        "path": "skills/pydantic",
+        "description": "Pydantic"
+      }
+    ],
+    "commands": [],
+    "agents": [],
+    "workflows": []
+  },
+  "dependencies": {
+    "claudeCode": ">=2.0.0"
+  },
+  "installation": {
+    "postInstall": "echo '\u2705 LUXOR Specialized Tools installed! 5 skills ready. Restart Claude Code.'"
+  },
+  "statistics": {
+    "totalSkills": 5,
+    "totalCommands": 0,
+    "totalAgents": 0,
+    "totalWorkflows": 0
+  }
+}

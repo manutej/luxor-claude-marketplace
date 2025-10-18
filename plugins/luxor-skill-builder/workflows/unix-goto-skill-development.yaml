@@ -1,0 +1,124 @@
+name: unix-goto-skill-development
+description: Complete workflow for creating unix-goto Claude skills with documentation research, knowledge extraction, and skill generation
+created: 2025-10-17T00:00:00Z
+version: 1.0
+
+steps:
+  - id: research-documentation
+    description: Research unix-goto documentation and architecture
+    suggested_agent: deep-researcher
+    estimated_tokens: 15000
+    estimated_time_minutes: 10
+    inputs: []
+    outputs:
+      - architecture_summary
+      - documentation_index
+      - key_patterns
+
+  - id: extract-knowledge
+    description: Extract core knowledge patterns from DEVELOPER-GUIDE.md and API.md
+    suggested_agent: deep-researcher
+    estimated_tokens: 18000
+    estimated_time_minutes: 12
+    depends_on:
+      - research-documentation
+    inputs:
+      - architecture_summary
+      - documentation_index
+    outputs:
+      - core_knowledge_patterns
+      - api_reference_data
+      - development_workflow_guide
+
+  - id: design-skill-structure
+    description: Design SKILL.md structure with YAML frontmatter
+    suggested_agent: docs-generator
+    estimated_tokens: 12000
+    estimated_time_minutes: 8
+    depends_on:
+      - extract-knowledge
+    inputs:
+      - core_knowledge_patterns
+    outputs:
+      - skill_yaml_frontmatter
+      - skill_structure_template
+
+  - id: generate-unix-goto-dev-skill
+    description: Generate unix-goto-development skill content
+    suggested_agent: docs-generator
+    estimated_tokens: 20000
+    estimated_time_minutes: 15
+    depends_on:
+      - design-skill-structure
+    inputs:
+      - skill_structure_template
+      - core_knowledge_patterns
+      - api_reference_data
+      - development_workflow_guide
+    outputs:
+      - unix_goto_development_skill
+
+  - id: create-testing-framework-skill
+    description: Create shell-testing-framework skill
+    suggested_agent: test-engineer
+    estimated_tokens: 16000
+    estimated_time_minutes: 12
+    depends_on:
+      - design-skill-structure
+    inputs:
+      - skill_structure_template
+      - development_workflow_guide
+    outputs:
+      - shell_testing_framework_skill
+
+  - id: create-benchmark-skill
+    description: Create performance-benchmark-specialist skill
+    suggested_agent: practical-programmer
+    estimated_tokens: 16000
+    estimated_time_minutes: 12
+    depends_on:
+      - design-skill-structure
+    inputs:
+      - skill_structure_template
+      - api_reference_data
+    outputs:
+      - performance_benchmark_skill
+
+  - id: validate-skills
+    description: Validate all skills against best practices
+    suggested_agent: practical-programmer
+    estimated_tokens: 14000
+    estimated_time_minutes: 10
+    depends_on:
+      - generate-unix-goto-dev-skill
+      - create-testing-framework-skill
+      - create-benchmark-skill
+    inputs:
+      - unix_goto_development_skill
+      - shell_testing_framework_skill
+      - performance_benchmark_skill
+    outputs:
+      - validation_report
+      - skills_ready_for_installation
+
+metadata:
+  total_steps: 7
+  total_estimated_tokens: 111000
+  total_estimated_time_minutes: 79
+  tags:
+    - skills
+    - unix-goto
+    - shell
+    - documentation
+  author: manu
+  project: unix-goto
+
+execution:
+  strategy: sequential_with_parallel
+  optimization: quality
+  parallel_groups:
+    - [research-documentation]
+    - [extract-knowledge]
+    - [design-skill-structure]
+    - [generate-unix-goto-dev-skill, create-testing-framework-skill, create-benchmark-skill]
+    - [validate-skills]

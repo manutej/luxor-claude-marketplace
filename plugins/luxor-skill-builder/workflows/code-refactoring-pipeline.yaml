@@ -1,0 +1,81 @@
+# Code Refactoring Pipeline - Systematic code improvement
+name: code-refactoring-pipeline
+description: Analyze, refactor, optimize, and verify code improvements
+created: 2025-10-12T15:00:00Z
+version: 1.0
+
+steps:
+  - id: analyze-code
+    description: Analyze codebase for refactoring opportunities
+    suggested_agent: practical-programmer
+    estimated_tokens: 18000
+    estimated_time_minutes: 14
+    inputs: []
+    outputs:
+      - analysis_report
+      - refactoring_suggestions
+      - priority_areas
+
+  - id: refactor-code
+    description: Refactor code following DRY, SOLID, KISS principles
+    suggested_agent: practical-programmer
+    estimated_tokens: 20000
+    estimated_time_minutes: 16
+    depends_on:
+      - analyze-code
+    inputs:
+      - refactoring_suggestions
+      - priority_areas
+    outputs:
+      - refactored_code
+
+  - id: trim-redundancy
+    description: Remove redundancy and improve code conciseness
+    suggested_agent: code-trimmer
+    estimated_tokens: 12000
+    estimated_time_minutes: 10
+    depends_on:
+      - refactor-code
+    inputs:
+      - refactored_code
+    outputs:
+      - trimmed_code
+
+  - id: verify-tests
+    description: Run existing tests to verify refactoring didn't break functionality
+    suggested_agent: test-runner
+    estimated_tokens: 8000
+    estimated_time_minutes: 8
+    depends_on:
+      - trim-redundancy
+    inputs:
+      - trimmed_code
+    outputs:
+      - test_results
+
+  - id: coverage-analysis
+    description: Analyze test coverage and identify gaps
+    suggested_agent: coverage-analyzer
+    estimated_tokens: 10000
+    estimated_time_minutes: 8
+    depends_on:
+      - verify-tests
+    inputs:
+      - test_results
+      - trimmed_code
+    outputs:
+      - coverage_report
+
+metadata:
+  total_steps: 5
+  total_estimated_tokens: 68000
+  total_estimated_time_minutes: 56
+  tags:
+    - refactoring
+    - code-quality
+    - testing
+  author: system
+
+execution:
+  strategy: sequential
+  optimization: quality

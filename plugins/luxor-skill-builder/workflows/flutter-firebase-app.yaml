@@ -1,0 +1,838 @@
+# Flutter Firebase App Development - Complete mobile app pipeline
+name: flutter-firebase-app
+description: End-to-end Flutter mobile application development with Firebase integration
+created: 2025-10-14T00:00:00Z
+version: 1.0
+
+steps:
+  - id: requirements-analysis
+    description: Analyze app requirements and define feature specifications
+    suggested_agent: practical-programmer
+    estimated_tokens: 15000
+    estimated_time_minutes: 12
+    inputs: []
+    outputs:
+      - requirements_doc
+      - feature_specifications
+      - user_stories
+    notes: |
+      Gather functional and non-functional requirements
+      Define target platforms (iOS, Android, Web)
+      Identify Firebase services needed (Auth, Firestore, Storage, etc.)
+      Create user stories and acceptance criteria
+
+  - id: app-architecture-design
+    description: Design Flutter app architecture with clean architecture patterns
+    suggested_agent: flutter-app-builder
+    estimated_tokens: 20000
+    estimated_time_minutes: 16
+    depends_on:
+      - requirements-analysis
+    inputs:
+      - requirements_doc
+      - feature_specifications
+    outputs:
+      - app_architecture
+      - state_management_design
+      - folder_structure
+      - routing_structure
+    notes: |
+      Design app architecture (BLoC, Provider, Riverpod, GetX)
+      Define folder structure and module organization
+      Plan navigation and routing strategy
+      Design data flow and state management
+
+  - id: firebase-setup-design
+    description: Design Firebase project architecture and service integration
+    suggested_agent: api-architect
+    estimated_tokens: 16000
+    estimated_time_minutes: 13
+    depends_on:
+      - requirements-analysis
+    inputs:
+      - requirements_doc
+      - feature_specifications
+    outputs:
+      - firebase_architecture
+      - security_rules
+      - firestore_schema
+      - authentication_flow
+    can_parallelize: true
+    parallel_group: design
+    notes: |
+      Design Firestore database schema and collections
+      Define security rules for Firestore and Storage
+      Plan authentication flow (Email/Password, Google, Apple, etc.)
+      Design Cloud Functions if needed
+      Plan Firebase Analytics events
+
+  - id: setup-firebase-project
+    description: Initialize Firebase project and configure for Flutter
+    suggested_agent: deployment-orchestrator
+    estimated_tokens: 14000
+    estimated_time_minutes: 11
+    depends_on:
+      - firebase-setup-design
+    inputs:
+      - firebase_architecture
+      - security_rules
+    outputs:
+      - firebase_config_files
+      - environment_setup
+      - service_account_keys
+    notes: |
+      Create Firebase project in console
+      Add iOS, Android, and Web apps to project
+      Generate and download config files (GoogleService-Info.plist, google-services.json)
+      Configure FlutterFire CLI
+      Set up Firebase Emulator Suite for local development
+
+  - id: implement-core-structure
+    description: Implement Flutter app core structure and navigation
+    suggested_agent: flutter-app-builder
+    estimated_tokens: 22000
+    estimated_time_minutes: 18
+    depends_on:
+      - app-architecture-design
+      - setup-firebase-project
+    inputs:
+      - app_architecture
+      - folder_structure
+      - routing_structure
+      - firebase_config_files
+    outputs:
+      - core_app_structure
+      - navigation_code
+      - theme_system
+      - dependency_injection
+    notes: |
+      Set up main.dart and app initialization
+      Implement navigation/routing (GoRouter, AutoRoute, etc.)
+      Create theme system with dark/light mode
+      Set up dependency injection (GetIt, Provider, etc.)
+      Configure Firebase initialization
+
+  - id: implement-authentication
+    description: Implement Firebase Authentication with multiple providers
+    suggested_agent: flutter-app-builder
+    estimated_tokens: 20000
+    estimated_time_minutes: 16
+    depends_on:
+      - implement-core-structure
+      - firebase-setup-design
+    inputs:
+      - core_app_structure
+      - authentication_flow
+      - firebase_config_files
+    outputs:
+      - auth_service
+      - login_screens
+      - signup_screens
+      - auth_state_management
+    notes: |
+      Implement Firebase Auth service wrapper
+      Create login/signup UI screens
+      Add social authentication (Google, Apple, Facebook)
+      Implement password reset and email verification
+      Handle auth state changes and persistence
+
+  - id: implement-firestore-integration
+    description: Implement Firestore database integration and data models
+    suggested_agent: flutter-app-builder
+    estimated_tokens: 24000
+    estimated_time_minutes: 20
+    depends_on:
+      - implement-core-structure
+      - firebase-setup-design
+    inputs:
+      - core_app_structure
+      - firestore_schema
+      - app_architecture
+    outputs:
+      - data_models
+      - firestore_services
+      - repository_layer
+      - offline_persistence
+    can_parallelize: true
+    parallel_group: firebase_services
+    notes: |
+      Create data models with JSON serialization
+      Implement Firestore CRUD operations
+      Add repository pattern for data access
+      Enable offline persistence
+      Implement real-time listeners and streams
+
+  - id: implement-storage-integration
+    description: Implement Firebase Storage for file uploads and downloads
+    suggested_agent: flutter-app-builder
+    estimated_tokens: 18000
+    estimated_time_minutes: 14
+    depends_on:
+      - implement-core-structure
+    inputs:
+      - core_app_structure
+      - firebase_config_files
+    outputs:
+      - storage_service
+      - image_picker_integration
+      - file_upload_ui
+      - download_manager
+    can_parallelize: true
+    parallel_group: firebase_services
+    notes: |
+      Implement Firebase Storage service
+      Add image picker and camera integration
+      Create upload progress indicators
+      Implement file download and caching
+      Handle storage security rules
+
+  - id: implement-ui-features
+    description: Implement core UI screens and features
+    suggested_agent: flutter-app-builder
+    estimated_tokens: 30000
+    estimated_time_minutes: 25
+    depends_on:
+      - implement-authentication
+      - implement-firestore-integration
+      - implement-storage-integration
+    inputs:
+      - auth_service
+      - firestore_services
+      - storage_service
+      - theme_system
+    outputs:
+      - feature_screens
+      - custom_widgets
+      - animations
+      - responsive_layouts
+    notes: |
+      Build main feature screens
+      Create reusable custom widgets
+      Implement animations and transitions
+      Make responsive layouts for different screen sizes
+      Add loading states and error handling UI
+
+  - id: implement-push-notifications
+    description: Implement Firebase Cloud Messaging for push notifications
+    suggested_agent: flutter-app-builder
+    estimated_tokens: 16000
+    estimated_time_minutes: 13
+    depends_on:
+      - implement-core-structure
+    inputs:
+      - core_app_structure
+      - firebase_config_files
+    outputs:
+      - fcm_service
+      - notification_handling
+      - topic_subscriptions
+    can_parallelize: true
+    parallel_group: additional_services
+    notes: |
+      Configure FCM for iOS and Android
+      Implement notification permission requests
+      Handle foreground and background notifications
+      Add topic subscriptions
+      Implement notification tap handling
+
+  - id: implement-analytics
+    description: Implement Firebase Analytics and Crashlytics
+    suggested_agent: flutter-app-builder
+    estimated_tokens: 14000
+    estimated_time_minutes: 11
+    depends_on:
+      - implement-core-structure
+    inputs:
+      - core_app_structure
+      - firebase_config_files
+    outputs:
+      - analytics_service
+      - event_tracking
+      - crashlytics_setup
+      - performance_monitoring
+    can_parallelize: true
+    parallel_group: additional_services
+    notes: |
+      Set up Firebase Analytics
+      Define and implement custom events
+      Configure Crashlytics for crash reporting
+      Add Performance Monitoring
+      Implement user property tracking
+
+  - id: implement-security-rules
+    description: Deploy and test Firebase Security Rules
+    suggested_agent: practical-programmer
+    estimated_tokens: 15000
+    estimated_time_minutes: 12
+    depends_on:
+      - firebase-setup-design
+      - implement-firestore-integration
+      - implement-storage-integration
+    inputs:
+      - security_rules
+      - firestore_schema
+      - authentication_flow
+    outputs:
+      - deployed_security_rules
+      - security_tests
+      - rules_documentation
+    notes: |
+      Write comprehensive Firestore security rules
+      Create Storage security rules
+      Test rules with Firebase Emulator
+      Deploy rules to Firebase project
+      Document security rule logic
+
+  - id: create-unit-tests
+    description: Create unit tests for business logic and services
+    suggested_agent: test-engineer
+    estimated_tokens: 20000
+    estimated_time_minutes: 16
+    depends_on:
+      - implement-authentication
+      - implement-firestore-integration
+      - implement-storage-integration
+    inputs:
+      - auth_service
+      - firestore_services
+      - storage_service
+      - data_models
+    outputs:
+      - unit_tests
+      - mock_services
+      - test_coverage_report
+    can_parallelize: true
+    parallel_group: testing
+    notes: |
+      Write unit tests for services and repositories
+      Mock Firebase services for testing
+      Test data models and serialization
+      Test business logic and state management
+      Aim for 80%+ code coverage
+
+  - id: create-widget-tests
+    description: Create widget tests for UI components
+    suggested_agent: test-engineer
+    estimated_tokens: 18000
+    estimated_time_minutes: 14
+    depends_on:
+      - implement-ui-features
+    inputs:
+      - feature_screens
+      - custom_widgets
+      - theme_system
+    outputs:
+      - widget_tests
+      - golden_tests
+      - accessibility_tests
+    can_parallelize: true
+    parallel_group: testing
+    notes: |
+      Write widget tests for screens and components
+      Create golden tests for visual regression
+      Test widget interactions and state changes
+      Verify accessibility features
+      Test responsive layouts
+
+  - id: create-integration-tests
+    description: Create integration tests for end-to-end user flows
+    suggested_agent: test-engineer
+    estimated_tokens: 22000
+    estimated_time_minutes: 18
+    depends_on:
+      - implement-ui-features
+      - implement-authentication
+    inputs:
+      - feature_screens
+      - auth_service
+      - navigation_code
+    outputs:
+      - integration_tests
+      - e2e_test_scenarios
+      - test_automation
+    notes: |
+      Write integration tests for critical user flows
+      Test authentication flows end-to-end
+      Test data synchronization scenarios
+      Use Firebase Emulator for testing
+      Create automated test scripts
+
+  - id: performance-optimization
+    description: Optimize app performance and bundle size
+    suggested_agent: flutter-app-builder
+    estimated_tokens: 18000
+    estimated_time_minutes: 15
+    depends_on:
+      - implement-ui-features
+      - create-widget-tests
+    inputs:
+      - feature_screens
+      - core_app_structure
+      - widget_tests
+    outputs:
+      - optimized_code
+      - performance_report
+      - build_optimization
+    notes: |
+      Optimize widget rebuilds and rendering
+      Implement lazy loading and pagination
+      Optimize images and assets
+      Reduce app bundle size
+      Profile and fix performance bottlenecks
+
+  - id: platform-specific-features
+    description: Implement platform-specific features for iOS and Android
+    suggested_agent: flutter-app-builder
+    estimated_tokens: 16000
+    estimated_time_minutes: 13
+    depends_on:
+      - implement-ui-features
+    inputs:
+      - feature_screens
+      - core_app_structure
+    outputs:
+      - platform_channels
+      - native_integrations
+      - platform_ui_adaptations
+    can_parallelize: true
+    parallel_group: platform_specific
+    notes: |
+      Implement platform channels if needed
+      Add iOS-specific features (Sign in with Apple, etc.)
+      Add Android-specific features
+      Implement platform-adaptive UI
+      Handle platform permissions
+
+  - id: app-icon-splash
+    description: Design and implement app icon and splash screen
+    suggested_agent: flutter-app-builder
+    estimated_tokens: 10000
+    estimated_time_minutes: 8
+    depends_on:
+      - implement-core-structure
+    inputs:
+      - theme_system
+    outputs:
+      - app_icons
+      - splash_screens
+      - launch_configuration
+    can_parallelize: true
+    parallel_group: platform_specific
+    notes: |
+      Design app icon for iOS and Android
+      Create adaptive icons for Android
+      Implement splash screen
+      Use flutter_launcher_icons package
+      Configure launch screens
+
+  - id: localization-i18n
+    description: Implement internationalization and localization
+    suggested_agent: flutter-app-builder
+    estimated_tokens: 14000
+    estimated_time_minutes: 11
+    depends_on:
+      - implement-ui-features
+    inputs:
+      - feature_screens
+      - custom_widgets
+    outputs:
+      - localization_files
+      - translation_keys
+      - language_switcher
+    can_parallelize: true
+    parallel_group: additional_features
+    notes: |
+      Set up flutter_localizations
+      Create ARB files for translations
+      Implement language selection
+      Localize all strings and formats
+      Test RTL languages
+
+  - id: accessibility-implementation
+    description: Implement accessibility features and compliance
+    suggested_agent: flutter-app-builder
+    estimated_tokens: 12000
+    estimated_time_minutes: 10
+    depends_on:
+      - implement-ui-features
+    inputs:
+      - feature_screens
+      - custom_widgets
+    outputs:
+      - accessibility_features
+      - semantic_labels
+      - screen_reader_support
+    can_parallelize: true
+    parallel_group: additional_features
+    notes: |
+      Add semantic labels to widgets
+      Implement screen reader support
+      Ensure proper contrast ratios
+      Test with TalkBack and VoiceOver
+      Follow WCAG guidelines
+
+  - id: app-documentation
+    description: Generate comprehensive app documentation
+    suggested_agent: docs-generator
+    estimated_tokens: 16000
+    estimated_time_minutes: 13
+    depends_on:
+      - implement-ui-features
+      - app-architecture-design
+    inputs:
+      - app_architecture
+      - feature_screens
+      - firebase_architecture
+    outputs:
+      - technical_documentation
+      - api_documentation
+      - setup_guide
+      - architecture_diagrams
+    can_parallelize: true
+    parallel_group: documentation
+    notes: |
+      Document app architecture and patterns
+      Create setup and installation guide
+      Document Firebase configuration
+      Generate API documentation
+      Create developer onboarding guide
+
+  - id: user-documentation
+    description: Create user-facing documentation and help content
+    suggested_agent: docs-generator
+    estimated_tokens: 12000
+    estimated_time_minutes: 10
+    depends_on:
+      - implement-ui-features
+    inputs:
+      - feature_screens
+      - requirements_doc
+    outputs:
+      - user_guide
+      - faq_document
+      - help_content
+    can_parallelize: true
+    parallel_group: documentation
+    notes: |
+      Write user guide and tutorials
+      Create FAQ section
+      Document common user workflows
+      Create help content for in-app support
+
+  - id: ios-deployment-setup
+    description: Configure iOS deployment and App Store submission
+    suggested_agent: deployment-orchestrator
+    estimated_tokens: 16000
+    estimated_time_minutes: 13
+    depends_on:
+      - performance-optimization
+      - platform-specific-features
+      - app-icon-splash
+    inputs:
+      - optimized_code
+      - app_icons
+      - platform_ui_adaptations
+    outputs:
+      - ios_build_config
+      - app_store_metadata
+      - provisioning_profiles
+    can_parallelize: true
+    parallel_group: deployment
+    notes: |
+      Configure iOS build settings
+      Set up provisioning profiles and certificates
+      Create App Store listing metadata
+      Configure entitlements and capabilities
+      Prepare for App Store review
+
+  - id: android-deployment-setup
+    description: Configure Android deployment and Play Store submission
+    suggested_agent: deployment-orchestrator
+    estimated_tokens: 16000
+    estimated_time_minutes: 13
+    depends_on:
+      - performance-optimization
+      - platform-specific-features
+      - app-icon-splash
+    inputs:
+      - optimized_code
+      - app_icons
+      - platform_ui_adaptations
+    outputs:
+      - android_build_config
+      - play_store_metadata
+      - signing_keys
+    can_parallelize: true
+    parallel_group: deployment
+    notes: |
+      Configure Android build settings
+      Generate signing keys for release
+      Create Play Store listing metadata
+      Configure ProGuard rules
+      Prepare for Play Store review
+
+  - id: ci-cd-pipeline
+    description: Set up CI/CD pipeline for automated builds and testing
+    suggested_agent: devops-github-expert
+    estimated_tokens: 18000
+    estimated_time_minutes: 15
+    depends_on:
+      - create-integration-tests
+      - ios-deployment-setup
+      - android-deployment-setup
+    inputs:
+      - integration_tests
+      - ios_build_config
+      - android_build_config
+    outputs:
+      - ci_cd_config
+      - automated_workflows
+      - deployment_scripts
+    notes: |
+      Set up GitHub Actions or Codemagic
+      Configure automated testing
+      Set up automated builds for iOS and Android
+      Configure deployment to TestFlight and Firebase App Distribution
+      Set up automated release to stores
+
+  - id: monitoring-setup
+    description: Set up monitoring, logging, and error tracking
+    suggested_agent: practical-programmer
+    estimated_tokens: 14000
+    estimated_time_minutes: 11
+    depends_on:
+      - implement-analytics
+      - implement-ui-features
+    inputs:
+      - analytics_service
+      - crashlytics_setup
+      - feature_screens
+    outputs:
+      - monitoring_dashboard
+      - logging_configuration
+      - alert_setup
+    notes: |
+      Configure Firebase Crashlytics dashboards
+      Set up custom logging
+      Configure error alerts
+      Set up performance monitoring
+      Create monitoring documentation
+
+  - id: final-qa-testing
+    description: Perform final QA testing and bug fixes
+    suggested_agent: test-engineer
+    estimated_tokens: 20000
+    estimated_time_minutes: 16
+    depends_on:
+      - create-integration-tests
+      - ios-deployment-setup
+      - android-deployment-setup
+    inputs:
+      - integration_tests
+      - ios_build_config
+      - android_build_config
+    outputs:
+      - qa_report
+      - bug_fixes
+      - release_checklist
+    notes: |
+      Run full regression testing
+      Test on multiple devices and OS versions
+      Verify Firebase integration on production
+      Test payment flows if applicable
+      Create release checklist
+
+  - id: beta-release
+    description: Deploy beta version to testers via Firebase App Distribution
+    suggested_agent: deployment-orchestrator
+    estimated_tokens: 12000
+    estimated_time_minutes: 10
+    depends_on:
+      - final-qa-testing
+      - monitoring-setup
+    inputs:
+      - qa_report
+      - ios_build_config
+      - android_build_config
+    outputs:
+      - beta_builds
+      - tester_feedback
+      - beta_release_notes
+    notes: |
+      Build and distribute beta to Firebase App Distribution
+      Collect feedback from beta testers
+      Monitor crashlytics and analytics
+      Address critical issues
+      Prepare for production release
+
+  - id: production-release
+    description: Release app to App Store and Play Store
+    suggested_agent: deployment-orchestrator
+    estimated_tokens: 14000
+    estimated_time_minutes: 11
+    depends_on:
+      - beta-release
+      - ci-cd-pipeline
+    inputs:
+      - beta_builds
+      - app_store_metadata
+      - play_store_metadata
+      - release_checklist
+    outputs:
+      - production_builds
+      - store_submissions
+      - release_notes
+      - post_launch_plan
+    notes: |
+      Build production releases
+      Submit to App Store and Play Store
+      Monitor submission review process
+      Prepare rollback plan
+      Plan post-launch monitoring and updates
+
+metadata:
+  total_steps: 30
+  total_estimated_tokens: 491000
+  total_estimated_time_minutes: 403
+  total_estimated_hours: 6.7
+  tags:
+    - flutter
+    - firebase
+    - mobile-app
+    - ios
+    - android
+    - full-stack
+  author: claude-code
+  complexity: high
+  target_use_cases:
+    - Flutter mobile app development
+    - Firebase backend integration
+    - Cross-platform mobile apps
+    - Production-ready mobile applications
+    - MVP mobile development
+
+execution:
+  strategy: mixed
+  optimization: balanced
+
+  parallel_groups:
+    design:
+      - firebase-setup-design
+    firebase_services:
+      - implement-firestore-integration
+      - implement-storage-integration
+    additional_services:
+      - implement-push-notifications
+      - implement-analytics
+    testing:
+      - create-unit-tests
+      - create-widget-tests
+    platform_specific:
+      - platform-specific-features
+      - app-icon-splash
+    additional_features:
+      - localization-i18n
+      - accessibility-implementation
+    documentation:
+      - app-documentation
+      - user-documentation
+    deployment:
+      - ios-deployment-setup
+      - android-deployment-setup
+
+  sequential_dependencies:
+    - requirements-analysis
+    - [app-architecture-design, firebase-setup-design]
+    - setup-firebase-project
+    - implement-core-structure
+    - [implement-authentication, implement-firestore-integration, implement-storage-integration]
+    - implement-ui-features
+    - [implement-push-notifications, implement-analytics, implement-security-rules]
+    - [create-unit-tests, create-widget-tests, create-integration-tests]
+    - performance-optimization
+    - [platform-specific-features, app-icon-splash, localization-i18n, accessibility-implementation]
+    - [app-documentation, user-documentation]
+    - [ios-deployment-setup, android-deployment-setup]
+    - ci-cd-pipeline
+    - monitoring-setup
+    - final-qa-testing
+    - beta-release
+    - production-release
+
+  checkpoints:
+    - after: requirements-analysis
+      validate: Requirements document is complete and approved
+    - after: firebase-setup-design
+      validate: Firebase architecture designed and security rules defined
+    - after: implement-authentication
+      validate: Authentication works with all providers
+    - after: implement-ui-features
+      validate: All core features implemented and working
+    - after: create-integration-tests
+      validate: All tests passing with good coverage
+    - after: performance-optimization
+      validate: App performance meets targets
+    - after: final-qa-testing
+      validate: No critical bugs, ready for beta
+    - after: beta-release
+      validate: Beta feedback addressed, ready for production
+
+recommendations:
+  - Run parallel_groups concurrently to reduce total execution time
+  - Use Firebase Emulator Suite for local development and testing
+  - Implement feature flags for gradual rollout
+  - Set up proper error handling and logging from the start
+  - Use code generation tools (freezed, json_serializable) for data models
+  - Follow Flutter best practices and effective Dart guidelines
+  - Test on real devices throughout development
+  - Monitor Firebase costs and optimize queries
+
+firebase_services:
+  recommended:
+    - Firebase Authentication
+    - Cloud Firestore
+    - Firebase Storage
+    - Firebase Cloud Messaging
+    - Firebase Analytics
+    - Firebase Crashlytics
+    - Firebase Performance Monitoring
+    - Firebase App Distribution
+  optional:
+    - Cloud Functions
+    - Firebase Remote Config
+    - Firebase Dynamic Links
+    - Firebase In-App Messaging
+    - Firebase A/B Testing
+
+flutter_packages_recommended:
+  state_management:
+    - flutter_bloc
+    - provider
+    - riverpod
+    - get
+  firebase:
+    - firebase_core
+    - firebase_auth
+    - cloud_firestore
+    - firebase_storage
+    - firebase_messaging
+    - firebase_analytics
+    - firebase_crashlytics
+  ui:
+    - cached_network_image
+    - flutter_svg
+    - animations
+  routing:
+    - go_router
+    - auto_route
+  utilities:
+    - freezed
+    - json_serializable
+    - injectable
+    - get_it
+
+estimated_costs:
+  tokens: 491000
+  time_sequential: 403 minutes (6.7 hours)
+  time_optimized: 260 minutes (4.3 hours) with parallelization
+  suggested_context_budget: 550000 tokens (includes overhead)

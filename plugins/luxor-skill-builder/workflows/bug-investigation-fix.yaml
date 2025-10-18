@@ -1,0 +1,72 @@
+# Bug Investigation and Fix - Comprehensive debugging workflow
+name: bug-investigation-fix
+description: Investigate, debug, fix, and verify bug resolution
+created: 2025-10-12T15:00:00Z
+version: 1.0
+
+steps:
+  - id: investigate-bug
+    description: Perform root cause analysis and identify bug source
+    suggested_agent: debug-detective
+    estimated_tokens: 22000
+    estimated_time_minutes: 18
+    inputs: []
+    outputs:
+      - root_cause_analysis
+      - affected_files
+      - reproduction_steps
+
+  - id: implement-fix
+    description: Implement bug fix following best practices
+    suggested_agent: practical-programmer
+    estimated_tokens: 16000
+    estimated_time_minutes: 12
+    depends_on:
+      - investigate-bug
+    inputs:
+      - root_cause_analysis
+      - affected_files
+    outputs:
+      - fixed_code
+      - fix_description
+
+  - id: create-regression-tests
+    description: Create tests to prevent bug regression
+    suggested_agent: test-engineer
+    estimated_tokens: 12000
+    estimated_time_minutes: 10
+    depends_on:
+      - implement-fix
+    inputs:
+      - fixed_code
+      - reproduction_steps
+    outputs:
+      - regression_tests
+
+  - id: verify-fix
+    description: Run tests and verify bug is resolved
+    suggested_agent: test-runner
+    estimated_tokens: 8000
+    estimated_time_minutes: 8
+    depends_on:
+      - create-regression-tests
+    inputs:
+      - regression_tests
+      - fixed_code
+    outputs:
+      - test_results
+      - verification_report
+
+metadata:
+  total_steps: 4
+  total_estimated_tokens: 58000
+  total_estimated_time_minutes: 48
+  tags:
+    - debugging
+    - bugfix
+    - testing
+  author: system
+
+execution:
+  strategy: sequential
+  optimization: quality

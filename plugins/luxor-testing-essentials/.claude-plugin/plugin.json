@@ -1,0 +1,52 @@
+{
+  "id": "luxor-testing-essentials",
+  "name": "LUXOR Testing Essentials",
+  "version": "1.0.0",
+  "description": "Comprehensive testing skills covering pytest, pytest patterns, and shell testing framework",
+  "author": "LUXOR <manu@luxor.dev>",
+  "license": "MIT",
+  "homepage": "https://github.com/luxor/luxor-testing-essentials",
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/luxor/luxor-testing-essentials.git"
+  },
+  "keywords": [
+    "pytest",
+    "testing",
+    "test-automation"
+  ],
+  "contents": {
+    "skills": [
+      {
+        "name": "pytest",
+        "path": "skills/pytest",
+        "description": "Pytest"
+      },
+      {
+        "name": "pytest-patterns",
+        "path": "skills/pytest-patterns",
+        "description": "Pytest Patterns"
+      },
+      {
+        "name": "shell-testing-framework",
+        "path": "skills/shell-testing-framework",
+        "description": "Shell Testing Framework"
+      }
+    ],
+    "commands": [],
+    "agents": [],
+    "workflows": []
+  },
+  "dependencies": {
+    "claudeCode": ">=2.0.0"
+  },
+  "installation": {
+    "postInstall": "echo '\u2705 LUXOR Testing Essentials installed! 3 skills ready. Restart Claude Code.'"
+  },
+  "statistics": {
+    "totalSkills": 3,
+    "totalCommands": 0,
+    "totalAgents": 0,
+    "totalWorkflows": 0
+  }
+}

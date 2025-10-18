@@ -1,0 +1,72 @@
+# Frontend Feature Complete - Full frontend feature pipeline
+name: frontend-feature-complete
+description: Design, implement, test, and document frontend feature
+created: 2025-10-12T15:00:00Z
+version: 1.0
+
+steps:
+  - id: design-component
+    description: Design React component architecture and data flow
+    suggested_agent: frontend-architect
+    estimated_tokens: 20000
+    estimated_time_minutes: 15
+    inputs: []
+    outputs:
+      - component_design
+      - state_management_plan
+      - props_interface
+
+  - id: implement-component
+    description: Implement React component with TypeScript
+    suggested_agent: code-craftsman
+    estimated_tokens: 18000
+    estimated_time_minutes: 14
+    depends_on:
+      - design-component
+    inputs:
+      - component_design
+      - props_interface
+    outputs:
+      - component_code
+      - styles
+
+  - id: create-tests
+    description: Create unit tests and integration tests for component
+    suggested_agent: test-engineer
+    estimated_tokens: 14000
+    estimated_time_minutes: 11
+    depends_on:
+      - implement-component
+    inputs:
+      - component_code
+      - props_interface
+    outputs:
+      - test_suite
+
+  - id: document-component
+    description: Generate component documentation and usage examples
+    suggested_agent: docs-generator
+    estimated_tokens: 10000
+    estimated_time_minutes: 8
+    depends_on:
+      - implement-component
+    inputs:
+      - component_code
+      - props_interface
+    outputs:
+      - component_docs
+      - usage_examples
+
+metadata:
+  total_steps: 4
+  total_estimated_tokens: 62000
+  total_estimated_time_minutes: 48
+  tags:
+    - frontend
+    - react
+    - typescript
+  author: system
+
+execution:
+  strategy: sequential
+  optimization: balanced

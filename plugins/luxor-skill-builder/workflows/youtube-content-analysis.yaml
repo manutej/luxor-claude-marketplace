@@ -1,0 +1,59 @@
+# YouTube Content Analysis - Extract and analyze video content
+name: youtube-content-analysis
+description: Summarize YouTube videos and generate analysis reports
+created: 2025-10-12T15:00:00Z
+version: 1.0
+
+steps:
+  - id: extract-transcript
+    description: Extract and summarize YouTube video transcript
+    suggested_agent: youtube-summarizer
+    estimated_tokens: 18000
+    estimated_time_minutes: 12
+    inputs: []
+    outputs:
+      - video_summary
+      - key_points
+      - timestamps
+
+  - id: deep-analysis
+    description: Perform deep analysis of video content and themes
+    suggested_agent: deep-researcher
+    estimated_tokens: 22000
+    estimated_time_minutes: 18
+    depends_on:
+      - extract-transcript
+    inputs:
+      - video_summary
+      - key_points
+    outputs:
+      - content_analysis
+      - insights
+
+  - id: generate-report
+    description: Generate comprehensive analysis report with citations
+    suggested_agent: docs-generator
+    estimated_tokens: 14000
+    estimated_time_minutes: 10
+    depends_on:
+      - deep-analysis
+    inputs:
+      - video_summary
+      - content_analysis
+      - timestamps
+    outputs:
+      - analysis_report
+
+metadata:
+  total_steps: 3
+  total_estimated_tokens: 54000
+  total_estimated_time_minutes: 40
+  tags:
+    - youtube
+    - content-analysis
+    - research
+  author: system
+
+execution:
+  strategy: sequential
+  optimization: balanced

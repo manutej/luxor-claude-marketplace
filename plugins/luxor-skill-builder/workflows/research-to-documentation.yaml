@@ -1,0 +1,57 @@
+# Research to Documentation - Deep research pipeline
+name: research-to-documentation
+description: Comprehensive research followed by structured documentation
+created: 2025-10-12T15:00:00Z
+version: 1.0
+
+steps:
+  - id: deep-research
+    description: Conduct comprehensive research on topic using web search and analysis
+    suggested_agent: deep-researcher
+    estimated_tokens: 25000
+    estimated_time_minutes: 25
+    inputs: []
+    outputs:
+      - research_findings
+      - source_citations
+
+  - id: synthesize-knowledge
+    description: Synthesize research findings into coherent knowledge structure
+    suggested_agent: mercurio-orchestrator
+    estimated_tokens: 30000
+    estimated_time_minutes: 20
+    depends_on:
+      - deep-research
+    inputs:
+      - research_findings
+    outputs:
+      - knowledge_synthesis
+      - key_insights
+
+  - id: create-documentation
+    description: Generate comprehensive documentation from synthesized knowledge
+    suggested_agent: docs-generator
+    estimated_tokens: 15000
+    estimated_time_minutes: 12
+    depends_on:
+      - synthesize-knowledge
+    inputs:
+      - knowledge_synthesis
+      - source_citations
+    outputs:
+      - documentation
+      - examples
+
+metadata:
+  total_steps: 3
+  total_estimated_tokens: 70000
+  total_estimated_time_minutes: 57
+  tags:
+    - research
+    - documentation
+    - knowledge
+  author: system
+
+execution:
+  strategy: sequential
+  optimization: quality
