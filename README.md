@@ -25,6 +25,41 @@ Built from real-world development experience, these plugins provide Claude Code 
 
 ---
 
+## 🚀 Quick Start
+
+### Install Entire Marketplace
+
+```bash
+# Clone marketplace
+git clone https://github.com/luxor/luxor-claude-marketplace.git
+cd luxor-claude-marketplace
+
+# Install all plugins (one-liner)
+for plugin in plugins/*/; do (cd "$plugin" && ./install.sh); done
+```
+
+### Install Individual Plugin
+
+```bash
+# Install just frontend skills
+cd luxor-claude-marketplace/plugins/luxor-frontend-essentials
+./install.sh
+
+# Restart Claude Code
+```
+
+### Install Featured Bundle
+
+```bash
+# Install top 4 featured plugins
+cd luxor-claude-marketplace/plugins
+for plugin in luxor-frontend-essentials luxor-backend-toolkit luxor-devops-suite luxor-skill-builder; do
+    (cd "$plugin" && ./install.sh)
+done
+```
+
+---
+
 ## 📦 Available Plugins
 
 ### 🎨 Frontend Development
@@ -215,40 +250,7 @@ cd plugins/luxor-skill-builder && ./install.sh
 
 ---
 
-## 🚀 Quick Start
 
-### Install Entire Marketplace
-
-```bash
-# Clone marketplace
-git clone https://github.com/luxor/luxor-claude-marketplace.git
-cd luxor-claude-marketplace
-
-# Install all plugins (one-liner)
-for plugin in plugins/*/; do (cd "$plugin" && ./install.sh); done
-```
-
-### Install Individual Plugin
-
-```bash
-# Install just frontend skills
-cd luxor-claude-marketplace/plugins/luxor-frontend-essentials
-./install.sh
-
-# Restart Claude Code
-```
-
-### Install Featured Bundle
-
-```bash
-# Install top 4 featured plugins
-cd luxor-claude-marketplace/plugins
-for plugin in luxor-frontend-essentials luxor-backend-toolkit luxor-devops-suite luxor-skill-builder; do
-    (cd "$plugin" && ./install.sh)
-done
-```
-
----
 
 ## 📊 Statistics
 
