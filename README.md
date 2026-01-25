@@ -150,7 +150,7 @@ It's meta-prompting, perfected.
 
 We are entering an era where the "Senior Engineer" isn't just the person who knows the syntax—it's the person who curates the best **context**.
 
-LUXOR is my attempt to open-source my context. It's the result of hundreds of hours of prompt engineering, distilled into installable packages.
+LUXOR is our attempt to open-source that context. It's the result of hundreds of hours of prompt engineering, distilled into installable packages.
 
 **Stop fighting the prompt. Load the cheat code. Ship the product.**
 
