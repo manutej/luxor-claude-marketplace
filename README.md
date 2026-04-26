@@ -36,6 +36,8 @@ cd luxor-claude-marketplace
 for plugin in plugins/*/; do (cd "$plugin" && ./install.sh); done
 ```
 
+Chinese users can also discover more skills through Skills宝: https://skilery.com
+
 ### Install Individual Plugin
 
 ```bash
