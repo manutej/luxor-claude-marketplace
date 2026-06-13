@@ -2,11 +2,16 @@
 # Behavioral regression test for C07: ((count++)) under `set -e` aborted
 # every installer after the first skill (post-increment of 0 returns a
 # 0-valued arithmetic expression -> exit status 1 -> set -e kills the script).
+# The same idiom ((skill_count++)) in uninstall.sh aborted the uninstaller
+# after removing skill #1, leaving the rest stale.
 #
-# Proves two things:
+# Proves four things:
 #   1. The patched install.sh scripts install ALL declared skills and exit 0.
 #   2. The pre-fix install.sh (from main) really did abort after skill #1,
 #      so this test fails on the buggy code (it is not a tautology).
+#   3. The patched uninstall.sh scripts remove ALL declared skills and exit 0,
+#      and the pre-fix uninstall.sh (from main) aborts after removing 1 skill.
+#   4. No ((var++)) / ((var--)) idiom survives anywhere in plugins/*.sh.
 #
 # Usage: bash tests/test_install_counter.sh   (from repo root)
 
@@ -86,12 +91,73 @@ for plugin_dir in "$REPO_ROOT"/plugins/*/; do
 done
 [ "$TESTED" -ge 9 ] || fail "expected to exercise >=9 plugins, only ran $TESTED"
 
+run_uninstaller() {
+    # $1 = plugin dir, $2 = uninstall script path; pre-populates a fake HOME
+    # with every skill the script declares, pipes the "y" confirmation, and
+    # echoes "exit_code skills_left" on stdout.
+    local plugin_dir="$1" script="$2"
+    local fake_home skill
+    fake_home="$(mktemp -d)"
+    mkdir -p "$fake_home/.claude/skills"
+    while IFS= read -r skill; do
+        mkdir -p "$fake_home/.claude/skills/$skill"
+    done < <(sed -n '/^SKILLS=(/,/^)/p' "$script" | grep -o '"[^"]*"' | tr -d '"')
+    local seeded
+    seeded=$(find "$fake_home/.claude/skills" -mindepth 1 -maxdepth 1 -type d | wc -l)
+    ( cd "$plugin_dir" && HOME="$fake_home" bash "$script" >/dev/null 2>&1 <<< "y" )
+    local rc=$?
+    local left
+    left=$(find "$fake_home/.claude/skills" -mindepth 1 -maxdepth 1 -type d 2>/dev/null | wc -l)
+    rm -rf "$fake_home"
+    echo "$rc $seeded $left"
+}
+
 echo ""
-echo "=== 3. Regression guard: no ((count++)) anywhere in plugin scripts ==="
-if grep -rn '((count++))' "$REPO_ROOT/plugins" --include='*.sh'; then
-    fail "((count++)) idiom still present"
+echo "=== 3. Negative control: pre-fix uninstaller (from main) must abort after removing skill #1 ==="
+UNINST_PLUGIN="$REPO_ROOT/plugins/luxor-frontend-essentials"
+BUGGY_UNINST="$(mktemp /tmp/buggy-uninstall-XXXXXX.sh)"
+if git -C "$REPO_ROOT" show main:plugins/luxor-frontend-essentials/uninstall.sh > "$BUGGY_UNINST" 2>/dev/null; then
+    if grep -q '((skill_count++))' "$BUGGY_UNINST"; then
+        read -r rc seeded left <<< "$(run_uninstaller "$UNINST_PLUGIN" "$BUGGY_UNINST")"
+        if [ "$rc" -ne 0 ] && [ "$left" -eq $((seeded - 1)) ]; then
+            pass "buggy main uninstaller aborted after 1 removal (exit=$rc, $left/$seeded left stale) — test detects the bug"
+        else
+            fail "buggy main uninstaller did NOT reproduce the abort (exit=$rc, seeded=$seeded, left=$left)"
+        fi
+    else
+        fail "main copy of uninstall.sh no longer contains ((skill_count++)); negative control invalid"
+    fi
 else
-    pass "no ((count++)) occurrences remain"
+    fail "could not extract pre-fix uninstall.sh from main"
+fi
+rm -f "$BUGGY_UNINST"
+
+echo ""
+echo "=== 4. Patched uninstallers: every declared skill removed, exit 0 ==="
+UNINST_TESTED=0
+for script in "$REPO_ROOT"/plugins/*/uninstall.sh; do
+    [ -f "$script" ] || continue
+    plugin_dir="$(dirname "$script")"
+    plugin="$(basename "$plugin_dir")"
+    grep -q '^SKILLS=(' "$script" || continue
+    UNINST_TESTED=$((UNINST_TESTED+1))
+    read -r rc seeded left <<< "$(run_uninstaller "$plugin_dir" "$script")"
+    if [ "$seeded" -lt 2 ]; then
+        fail "$plugin: only $seeded declared skills seeded — cannot prove multi-skill progress"
+    elif [ "$rc" -eq 0 ] && [ "$left" -eq 0 ]; then
+        pass "$plugin: exit=0, removed all $seeded skills, 0 left stale"
+    else
+        fail "$plugin: exit=$rc, removed $((seeded - left))/$seeded skills, $left left stale"
+    fi
+done
+[ "$UNINST_TESTED" -ge 1 ] || fail "expected to exercise >=1 uninstaller, ran $UNINST_TESTED"
+
+echo ""
+echo "=== 5. Regression guard: no ((var++)) / ((var--)) anywhere in plugin scripts ==="
+if grep -rnE '\(\([A-Za-z_][A-Za-z0-9_]*(\+\+|--)\)\)' "$REPO_ROOT/plugins" --include='*.sh'; then
+    fail "((var++)) / ((var--)) idiom still present in plugins/*.sh"
+else
+    pass "no ((var++)) / ((var--)) occurrences remain in plugins/*.sh"
 fi
 
 echo ""
