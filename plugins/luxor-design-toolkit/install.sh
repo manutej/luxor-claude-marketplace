@@ -41,7 +41,7 @@ for skill in "${SKILLS[@]}"; do
     if [ -d "skills/$skill" ]; then
         cp -r "skills/$skill" "$CLAUDE_DIR/skills/$skill"
         echo "  ✅ $skill"
-        ((count++))
+        count=$((count+1))
     fi
 done
 echo ""

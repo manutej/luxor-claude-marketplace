@@ -41,7 +41,7 @@ for skill in "${SKILLS[@]}"; do
     if [ -d "$CLAUDE_DIR/skills/$skill" ]; then
         rm -rf "$CLAUDE_DIR/skills/$skill"
         echo "  ✅ Removed $skill"
-        ((skill_count++))
+        skill_count=$((skill_count+1))
     fi
 done
 
